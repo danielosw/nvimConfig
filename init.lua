@@ -23,6 +23,8 @@ lazytable = {
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
+	"mfussenegger/nvim-dap-python",
+	
 	"hrsh7th/cmp-path",
 	"mhartington/formatter.nvim",
 	"hrsh7th/cmp-cmdline",
@@ -38,11 +40,32 @@ lazytable = {
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons',},
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-	{"EdenEast/nightfox.nvim", config=function ()
+	{
+		"mfussenegger/nvim-dap",
+		keys = {
+			{
+				"<leader>dc",
+				function() require("dap").continue() end,
+				desc = "Start/Continue Debugger",
+			},
+			{
+				"<leader>db",
+				function() require("dap").toggle_breakpoint() end,
+				desc = "Add Breakpoint",
+			},
+			{
+				"<leader>dt",
+				function() require("dap").terminate() end,
+				desc = "Terminate Debugger",
+			},
+		},
+	},
+	
+	"jay-babu/mason-nvim-dap.nvim",
+		{"EdenEast/nightfox.nvim", config=function ()
 		vim.cmd("colorscheme nightfox")
 	end},
 	
-	"mfussenegger/nvim-dap",
 	{"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass",},config=function ()
 		vim.o.winwidth = 10
       		vim.o.winminwidth = 10
@@ -55,7 +78,21 @@ lazytable = {
 	{"utilyre/barbecue.nvim",name = "barbecue",version = "*",dependencies = {"SmiteshP/nvim-navic","nvim-tree/nvim-web-devicons",},opts ={},},
 	{"nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = {"nvim-lua/plenary.nvim","nvim-tree/nvim-web-devicons","MunifTanjim/nui.nvim",}},
 	{ "folke/neodev.nvim", opts = {} },
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" },keys = {
+		{
+			"<leader>du",
+			function() require("dapui").toggle() end,
+			desc = "Toggle Debugger UI",
+		},
+	},
+	-- automatically open/close the DAP UI when starting/stopping the debugger
+	config = function()
+		local listener = require("dap").listeners
+		listener.after.event_initialized["dapui_config"] = function() require("dapui").open() end
+		listener.before.event_terminated["dapui_config"] = function () require("dapui").close() end
+		listener.before.event_exited["dapui_config"] = function() require("dapui").close() end
+	end, },
+	
 	{ 'nvim-telescope/telescope.nvim',tag = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' } },
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
 	{ "lukas-reineke/indent-blankline.nvim",      main = "ibl",                                                                                                                          opts = {} },
@@ -84,12 +121,14 @@ options = {
 
 }
 require("ibl").setup()
-require("mason").setup()
+mason = require("mason").setup()
+require("mason-nvim-dap").setup()
 require("neodev").setup({
 	library = { plugins = { "nvim-dap-ui" }, types = true },
 	...
 })
 require("mason-lspconfig").setup()
+
 require("dapui").setup()
 linters = { 'flake8' }
 require('lint').linters_by_ft = {
@@ -113,6 +152,10 @@ require('neoscroll').setup({
 })
 end
 local dap, dapui = require("dap"), require("dapui")
+local mason_registry = require("mason-registry")
+local debugpy = mason_registry.get_package("debugpy") -- note that this will error if you provide a non-existent package name
+local masonDebugPath = debugpy:get_install_path() -- returns a string like "/home/user/.local/share/nvim/mason/packages/codelldb"
+require('dap-python').setup(masonDebugPath.."\\venv\\Scripts\\python",{})
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
