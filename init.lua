@@ -10,6 +10,13 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+function IsNotNeovide ()
+if not vim.g.neovide then
+	return true
+	else
+		return false
+end
+end
 lazytable = {
 	"neovim/nvim-lspconfig",
 	"nvim-lua/plenary.nvim",
@@ -28,7 +35,16 @@ lazytable = {
 	{"EdenEast/nightfox.nvim", config=function ()
 		vim.cmd("colorscheme nightfox")
 	end},
+	
 	"mfussenegger/nvim-dap",
+	{"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass",},config=function ()
+		vim.o.winwidth = 10
+      		vim.o.winminwidth = 10
+      		vim.o.equalalways = false
+      		require('windows').setup()
+		end
+	},
+{"anuvyklack/animation.nvim",cond=IsNotNeovide},
 	"mfussenegger/nvim-lint",
 	{"utilyre/barbecue.nvim",name = "barbecue",version = "*",dependencies = {"SmiteshP/nvim-navic","nvim-tree/nvim-web-devicons",},opts ={},},
 	{"nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = {"nvim-lua/plenary.nvim","nvim-tree/nvim-web-devicons","MunifTanjim/nui.nvim",}},
@@ -39,26 +55,13 @@ lazytable = {
 	{ "lukas-reineke/indent-blankline.nvim",      main = "ibl",                                                                                                                          opts = {} },
 	{ "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
 	{'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
-	}
-	if not vim.g.neovide then
-		lazytable[#lazytable+1] ={"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass", "anuvyklack/animation.nvim",},config=function ()
-		vim.o.winwidth = 10
-      		vim.o.winminwidth = 10
-      		vim.o.equalalways = false
-      		require('windows').setup()
-	end}
-		lazytable[#lazytable+1] ="karb94/neoscroll.nvim" 
+	{"karb94/neoscroll.nvim",cond=IsNotNeovide},}
+	
+		 
 	 
 		
 	
-	else
-		lazytable[#lazytable+1] ={"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass",},config=function ()
-		vim.o.winwidth = 10
-      		vim.o.winminwidth = 10
-      		vim.o.equalalways = false
-      		require('windows').setup()
-	end}
-	end
+	
 require("lazy").setup(lazytable)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
