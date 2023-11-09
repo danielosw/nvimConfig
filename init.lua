@@ -30,13 +30,6 @@ lazytable = {
 	end},
 	"mfussenegger/nvim-dap",
 	"mfussenegger/nvim-lint",
-	{"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass", "anuvyklack/animation.nvim",},config=function ()
-		vim.o.winwidth = 10
-      		vim.o.winminwidth = 10
-      		vim.o.equalalways = false
-      		require('windows').setup()
-	end},
-	"karb94/neoscroll.nvim",
 	{"utilyre/barbecue.nvim",name = "barbecue",version = "*",dependencies = {"SmiteshP/nvim-navic","nvim-tree/nvim-web-devicons",},opts ={},},
 	{"nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = {"nvim-lua/plenary.nvim","nvim-tree/nvim-web-devicons","MunifTanjim/nui.nvim",}},
 	{ "folke/neodev.nvim", opts = {} },
@@ -47,6 +40,25 @@ lazytable = {
 	{ "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
 	{'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
 	}
+	if not vim.g.neovide then
+		lazytable[#lazytable+1] ={"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass", "anuvyklack/animation.nvim",},config=function ()
+		vim.o.winwidth = 10
+      		vim.o.winminwidth = 10
+      		vim.o.equalalways = false
+      		require('windows').setup()
+	end}
+		lazytable[#lazytable+1] ="karb94/neoscroll.nvim" 
+	 
+		
+	
+	else
+		lazytable[#lazytable+1] ={"anuvyklack/windows.nvim", dependencies={"anuvyklack/middleclass",},config=function ()
+		vim.o.winwidth = 10
+      		vim.o.winminwidth = 10
+      		vim.o.equalalways = false
+      		require('windows').setup()
+	end}
+	end
 require("lazy").setup(lazytable)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
@@ -64,7 +76,7 @@ require('lint').linters_by_ft = {
 	markdown = { linters }
 }
 require('lualine').setup()
-
+if not vim.g.neovide then
 require('neoscroll').setup({
     -- All these keys will be mapped to their corresponding default scrolling animation
     mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
@@ -78,6 +90,7 @@ require('neoscroll').setup({
     post_hook = nil,             -- Function to run after the scrolling animation ends
     performance_mode = false,    -- Disable "Performance Mode" on all buffers.
 })
+end
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
