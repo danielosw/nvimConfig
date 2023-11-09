@@ -30,6 +30,12 @@ lazytable = {
 	"hrsh7th/cmp-vsnip",
 	"nvim-lualine/lualine.nvim",
 	"hrsh7th/vim-vsnip",
+	"AckslD/swenv.nvim",	
+	{
+  'stevearc/dressing.nvim',
+  opts = {},
+},
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons',},
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	{"EdenEast/nightfox.nvim", config=function ()
@@ -65,7 +71,18 @@ lazytable = {
 require("lazy").setup(lazytable)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+vim.opt.termguicolors = true
+require("bufferline").setup{
+options = {
+        hover = {
+            enabled = true,
+            delay = 200,
+            reveal = {'close'}
+        },
+	separator_style = "slant",
+    },
 
+}
 require("ibl").setup()
 require("mason").setup()
 require("neodev").setup({
@@ -78,6 +95,7 @@ linters = { 'flake8' }
 require('lint').linters_by_ft = {
 	markdown = { linters }
 }
+
 require('lualine').setup()
 if not vim.g.neovide then
 require('neoscroll').setup({
@@ -158,6 +176,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.lsp.buf.format { async = true }
 		end, opts)
 	end,
+})
+require('swenv').setup({
+  -- Should return a list of tables with a `name` and a `path` entry each.
+  -- Gets the argument `venvs_path` set below.
+  -- By default just lists the entries in `venvs_path`.
+  get_venvs = function(venvs_path)
+    return require('swenv.api').get_venvs(venvs_path)
+  end,
+  -- Path passed to `get_venvs`.
+  venvs_path = vim.fn.expand('~/venvs'),
+  -- Something to do after setting an environment, for example call vim.cmd.LspRestart
+  post_set_venv = nil,
 })
 
 -- nvim cmp config
