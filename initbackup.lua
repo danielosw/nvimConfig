@@ -167,7 +167,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local lspservers = { 'pyright', 'tsserver', 'rust_analyzer', 'lua_ls' }
+local lspservers = { 'pyright', 'tsserver', 'rust_analyzer', 'lua_ls', 'dartls' }
 for _, lsp in ipairs(lspservers) do
 	lspconfig[lsp].setup {
 		capabilities = capabilities,

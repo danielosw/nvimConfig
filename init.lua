@@ -158,17 +158,10 @@ dap.listeners.before.event_terminated["dapui_config"] =
 dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local lspservers = {'pyright', 'tsserver', 'rust_analyzer', 'lua_ls'}
+local lspservers = {'pyright', 'tsserver', 'rust_analyzer', 'lua_ls','dartls'}
 for _, lsp in ipairs(lspservers) do
     lspconfig[lsp].setup {capabilities = capabilities}
 end
-lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
-    -- Server-specific settings. See `:help lspconfig-setup`
-    settings = {['rust-analyzer'] = {}}
-}
-
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
