@@ -158,7 +158,7 @@ dap.listeners.before.event_terminated["dapui_config"] =
 dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local lspservers = { 'rust_analyzer','dartls'}
+local lspservers = { 'dartls'}
 local masonconfig = require('mason-lspconfig')
 for _, pkg_info in ipairs(mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
