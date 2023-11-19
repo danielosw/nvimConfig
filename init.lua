@@ -101,7 +101,17 @@ lazytable = {
     }, {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
-    {"karb94/neoscroll.nvim", cond = IsNotNeovide}
+    {"karb94/neoscroll.nvim", cond = IsNotNeovide},
+    {
+  "NeogitOrg/neogit",
+  dependencies = {
+    "nvim-lua/plenary.nvim",         -- required
+    "nvim-telescope/telescope.nvim", -- optional
+    "sindrets/diffview.nvim",        -- optional
+    "ibhagwan/fzf-lua",              -- optional
+  },
+  config = true
+}
 }
 
 require("lazy").setup(lazytable)
@@ -127,6 +137,8 @@ require("mason-lspconfig").setup()
 require("dapui").setup()
 linters = {'flake8'}
 require('lint').linters_by_ft = {markdown = {linters}}
+
+local neogit = require('neogit')
 
 require('lualine').setup()
 if not vim.g.neovide then
