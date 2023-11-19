@@ -17,6 +17,7 @@ end
 
 lazytable = {
     "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
+    "nvimtools/none-ls.nvim",
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
@@ -139,6 +140,16 @@ linters = {'flake8'}
 require('lint').linters_by_ft = {markdown = {linters}}
 
 local neogit = require('neogit')
+local null_ls = require("null-ls")
+null_ls.setup({
+	sources = {
+		null_ls.builtins.completion.vsnip,
+		null_ls.builtins.diagnostics.flake8,
+		
+	}
+
+})
+
 
 require('lualine').setup()
 if not vim.g.neovide then
