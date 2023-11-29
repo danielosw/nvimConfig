@@ -17,7 +17,7 @@ end
 
 lazytable = {
     "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
-    "nvimtools/none-ls.nvim",
+    "nvimtools/none-ls.nvim", "jay-babu/mason-null-ls.nvim", 
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
@@ -134,19 +134,24 @@ require("neodev").setup({
     ...
 })
 require("mason-lspconfig").setup()
-
+require("mason-null-ls").setup()
 require("dapui").setup()
-linters = {'flake8'}
-require('lint').linters_by_ft = {markdown = {linters}}
-
-local neogit = require('neogit')
+Linters = {}
+Mason_registry = require("mason-registry")
+for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
+	for _, type in ipairs(pkg_info.spec.categories) do
+		if type == "Linter" then
+			Linters[#Linters+1] = pkg_info.name
+		end
+	end
+end
+require('lint').linters_by_ft = {markdown = {Linters}}
 local null_ls = require("null-ls")
+tempsource = {null_ls.builtins.completion.vsnip, null_ls.builtins.diagnostics.flake8, null_ls.builtins.diagnostics.alex, null_ls.builtins.formatting.rustftm}
+local neogit = require('neogit')
+
 null_ls.setup({
-	sources = {
-		null_ls.builtins.completion.vsnip,
-		null_ls.builtins.diagnostics.flake8,
-		null_ls.builtins.diagnostics.alex,
-	}
+	sources = tempsource
 
 })
 
@@ -170,8 +175,7 @@ if not vim.g.neovide then
     })
 end
 local dap, dapui = require("dap"), require("dapui")
-local mason_registry = require("mason-registry")
-local debugpy = mason_registry.get_package("debugpy") -- note that this will error if you provide a non-existent package name
+local debugpy = Mason_registry.get_package("debugpy") -- note that this will error if you provide a non-existent package name
 local masonDebugPath = debugpy:get_install_path() -- returns a string like "/home/user/.local/share/nvim/mason/packages/codelldb"
 require('dap-python').setup(masonDebugPath .. "\\venv\\Scripts\\python", {})
 dap.listeners.after.event_initialized["dapui_config"] =
@@ -183,7 +187,7 @@ dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 local lspconfig = require('lspconfig')
 local lspservers = {}
 local masonconfig = require('mason-lspconfig')
-for _, pkg_info in ipairs(mason_registry.get_installed_packages()) do
+for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
 		if type == "LSP" then
 			lspservers[#lspservers+1]=masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
