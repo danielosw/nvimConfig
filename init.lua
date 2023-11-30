@@ -21,7 +21,7 @@ lazytable = {
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip",
+    "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip", "Canop/nvim-bacon",
     "AckslD/swenv.nvim", {'stevearc/dressing.nvim', opts = {}}, {
         'akinsho/bufferline.nvim',
         version = "*",
@@ -126,6 +126,16 @@ require("bufferline").setup {
     }
 
 }
+vim.api.nvim_create_autocmd('TermResponse', {
+	once = true,
+	callback = function ()
+		vim.cmd('q')
+	end
+})
+vim.api.nvim_buf_set_keymap(0, "n", "<leader>bc", "<cmd>te bacon<CR>", {noremap = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<leader>!", "<cmd>BaconLoad<CR><cmd>w<CR><cmd>BaconNext<CR>", {noremap = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<leader>bl", "<cmd>BaconList<CR>", {noremap = true})
+
 require("ibl").setup()
 mason = require("mason").setup()
 require("mason-nvim-dap").setup()
