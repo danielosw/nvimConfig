@@ -372,7 +372,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 if vim.g.neovide then
     vim.g.neovide_theme = 'auto'
     vim.g.neovide_no_idle = true
-    vim.o.guifont = "CaskaydiaCove Nerd Font,Cascadia Code" -- text below applies for VimScript
+    vim.o.guifont = "CaskaydiaCove Nerd Font" -- text below applies for VimScript
 end
 if vim.g.neovide then
     vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
