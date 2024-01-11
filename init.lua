@@ -157,7 +157,7 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 end
 require('lint').linters_by_ft = {markdown = {Linters}}
 local null_ls = require("null-ls")
-tempsource = {null_ls.builtins.completion.vsnip, null_ls.builtins.diagnostics.flake8, null_ls.builtins.diagnostics.alex, null_ls.builtins.formatting.rustftm}
+tempsource = {null_ls.builtins.completion.vsnip, null_ls.builtins.diagnostics.flake8, null_ls.builtins.diagnostics.alex}
 local neogit = require('neogit')
 
 null_ls.setup({
