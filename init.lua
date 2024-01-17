@@ -18,7 +18,7 @@ end
 lazytable = {
     "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
     "nvimtools/none-ls.nvim", "jay-babu/mason-null-ls.nvim", 
-    "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "Mofiqul/dracula.nvim",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip", "Canop/nvim-bacon",
@@ -43,10 +43,8 @@ lazytable = {
                 desc = "Terminate Debugger"
             }
         }
-    }, "jay-babu/mason-nvim-dap.nvim", {
-        "EdenEast/nightfox.nvim",
-        config = function() vim.cmd("colorscheme nightfox") end
-    }, {
+    }, "jay-babu/mason-nvim-dap.nvim",
+    {
         "anuvyklack/windows.nvim",
         dependencies = {"anuvyklack/middleclass"},
         config = function()
@@ -126,6 +124,8 @@ require("bufferline").setup {
     }
 
 }
+vim.cmd[[colorscheme dracula]]
+
 vim.api.nvim_create_autocmd('TermResponse', {
 	once = true,
 	callback = function ()
@@ -166,7 +166,11 @@ null_ls.setup({
 })
 
 
-require('lualine').setup()
+require('lualine').setup{
+	options={
+		theme = 'dracula-nvim'
+	}
+}
 if not vim.g.neovide then
     require('neoscroll').setup({
         -- All these keys will be mapped to their corresponding default scrolling animation
