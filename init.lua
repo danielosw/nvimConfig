@@ -15,13 +15,14 @@ function IsNotNeovide()
     end
 end
 vim.g.mapleader = ","
-require("lazy").setup("plugins")
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
+
+require("lazy").setup("plugins")
+
 require("bufferline").setup {
     options = {
-        hover = {enabled = true, delay = 200, reveal = {'close'}},
-        separator_style = "slant"
+    separator_style = "padded_slant"
     }
 
 }
