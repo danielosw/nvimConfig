@@ -13,7 +13,7 @@ return {
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "Mofiqul/dracula.nvim",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip", "Canop/nvim-bacon",
+    "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip", "Canop/nvim-bacon", 'dcampos/cmp-snippy', 'dcampos/nvim-snippy', 
     "AckslD/swenv.nvim", {'stevearc/dressing.nvim', opts = {}}, {
         'akinsho/bufferline.nvim',
         version = "*",
