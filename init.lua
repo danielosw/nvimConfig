@@ -1,4 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git", "clone", "--filter=blob:none",
@@ -19,14 +21,19 @@ vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
 
 require("lazy").setup("plugins")
+require("themery").setup({
+	themes = {"dracula","nightfox", "dracula-soft"},
+	livePreview = true,
+	themeConfigFile = "~/Appdata/local/nvim/lua/theme.lua"
 
+})
+require("theme")
 require("bufferline").setup {
     options = {
     separator_style = "slant"
     }
 
 }
-vim.cmd[[colorscheme dracula]]
 
 vim.api.nvim_create_autocmd('TermResponse', {
 	once = true,
@@ -70,7 +77,7 @@ null_ls.setup({
 
 require('lualine').setup{
 	options={
-		theme = 'dracula-nvim'
+		theme = 'auto'
 	}
 }
 if not vim.g.neovide then

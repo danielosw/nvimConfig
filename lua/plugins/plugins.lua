@@ -8,7 +8,8 @@ end
 
 return {
 
-    "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
+     
+	"zaldih/themery.nvim", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
     "nvimtools/none-ls.nvim", "jay-babu/mason-null-ls.nvim", 
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "Mofiqul/dracula.nvim",
     "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
