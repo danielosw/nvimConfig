@@ -22,7 +22,7 @@ vim.opt.termguicolors = true
 
 require("lazy").setup("plugins")
 require("themery").setup({
-	themes = {"dracula","nightfox", "dracula-soft"},
+	themes = {"dracula","nightfox", "dracula-soft","tokyonight-night","tokyonight-moon", "tokyonight-storm", "tokyonight-day", "neon"},
 	livePreview = true,
 	themeConfigFile = "~/Appdata/local/nvim/lua/theme.lua"
 
