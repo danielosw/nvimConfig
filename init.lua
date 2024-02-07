@@ -24,7 +24,7 @@ require("lazy").setup("plugins")
 require("themery").setup({
 	themes = {"dracula","nightfox", "dracula-soft","tokyonight-night","tokyonight-moon", "tokyonight-storm", "tokyonight-day", "neon"},
 	livePreview = true,
-	themeConfigFile = "~/.config/nvim/lua/theme.lua"
+	themeConfigFile = "~/appdata/local/nvim/lua/theme.lua"
 
 })
 require("theme")
@@ -71,7 +71,7 @@ require("neodev").setup({
     ...
 })
 require("mason-lspconfig").setup()
-require("mason-null-ls").setup()
+
 require("dapui").setup()
 Linters = {}
 Mason_registry = require("mason-registry")
@@ -83,16 +83,19 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	end
 end
 require('lint').linters_by_ft = {markdown = {Linters}}
-local null_ls = require("null-ls")
-tempsource = {null_ls.builtins.diagnostics.flake8, null_ls.builtins.diagnostics.alex}
+
+
 local neogit = require('neogit')
-
-null_ls.setup({
-	sources = tempsource
-
+require("mason-null-ls").setup({
+	automatic_installation = false,
+    	handlers = {},
 })
 
-
+require("null-ls").setup({
+    sources = {
+        -- Anything not supported by mason.
+    }
+})
 require('lualine').setup{
 	options={
 		theme = 'auto'
