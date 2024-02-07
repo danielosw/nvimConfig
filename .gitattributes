@@ -1,1 +1,1 @@
-init.lua text eol=lf filter=cleanPass
+init.lua text filter=cleanPass
