@@ -21,8 +21,12 @@ vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
 
 require("lazy").setup("plugins")
+themes = {}
+for _, value in pairs(vim.fn.getcompletion("","color")) do
+	themes[#themes+1]=value
+end
 require("themery").setup({
-	themes = {"dracula","nightfox", "dracula-soft","tokyonight-night","tokyonight-moon", "tokyonight-storm", "tokyonight-day", "neon",  "catppuccin-latte", "catppuccin-frappe", "catppuccin-macchiato", "catppuccin-mocha"},
+	themes = themes,
 	livePreview = true,
 	themeConfigFile = "~/appdata/local/nvim/lua/theme.lua"
 
