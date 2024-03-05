@@ -1,6 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-
+vim.o.shell = "pwsh.exe"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git", "clone", "--filter=blob:none",
@@ -22,7 +22,7 @@ vim.opt.termguicolors = true
 
 require("lazy").setup("plugins")
 require("themery").setup({
-	themes = {"dracula","nightfox", "dracula-soft","tokyonight-night","tokyonight-moon", "tokyonight-storm", "tokyonight-day", "neon"},
+	themes = {"dracula","nightfox", "dracula-soft","tokyonight-night","tokyonight-moon", "tokyonight-storm", "tokyonight-day", "neon",  "catppuccin-latte", "catppuccin-frappe", "catppuccin-macchiato", "catppuccin-mocha"},
 	livePreview = true,
 	themeConfigFile = "~/appdata/local/nvim/lua/theme.lua"
 
