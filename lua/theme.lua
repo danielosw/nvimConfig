@@ -1,5 +1,5 @@
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme dracula")
-vim.g.theme_id = 14
+vim.cmd("colorscheme cyberdream")
+vim.g.theme_id = 8
 -- end themery block
