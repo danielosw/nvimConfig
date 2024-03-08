@@ -92,17 +92,6 @@ return {
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
     {"karb94/neoscroll.nvim", cond = IsNotNeovide},
-    {
-  "NeogitOrg/neogit",
-  dependencies = {
-    "nvim-lua/plenary.nvim",         -- required
-    "nvim-telescope/telescope.nvim", -- optional
-    "sindrets/diffview.nvim",        -- optional
-    "ibhagwan/fzf-lua",              -- optional
-  },
-  config = true
-
-}
 
 
 }

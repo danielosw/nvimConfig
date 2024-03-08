@@ -9,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 function IsNotNeovide()
     if not vim.g.neovide then
         return true
@@ -28,7 +29,7 @@ end
 require("themery").setup({
 	themes = themes,
 	livePreview = true,
-	themeConfigFile = "~/appdata/local/nvim/lua/theme.lua"
+	themeConfigFile = "~/.config/nvim/lua/theme.lua"
 
 })
 require("theme")
@@ -89,7 +90,6 @@ end
 require('lint').linters_by_ft = {markdown = {Linters}}
 
 
-local neogit = require('neogit')
 require("mason-null-ls").setup({
 	automatic_installation = false,
     	handlers = {},
