@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 vim.o.shell = "pwsh.exe"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -9,7 +8,6 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 function IsNotNeovide()
     if not vim.g.neovide then
         return true
@@ -17,6 +15,18 @@ function IsNotNeovide()
         return false
     end
 end
+function Iswindows()
+	if (package.config:sub(1,1) == "\\")
+		then
+			return true
+		else
+			return false
+		end
+end
+if (Iswindows())
+	then
+		vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+	end
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
@@ -26,10 +36,17 @@ themes = {}
 for _, value in pairs(vim.fn.getcompletion("","color")) do
 	themes[#themes+1]=value
 end
+if (Iswindows())
+	then
+		themeconfig = "~/appdata/local/nvim/lua/theme.lua"
+	else
+		themeconfig = "~/.config/nvim/lua/theme.lua"
+	end
+ 
 require("themery").setup({
 	themes = themes,
 	livePreview = true,
-	themeConfigFile = "~/.config/nvim/lua/theme.lua"
+	themeConfigFile = themeconfig
 
 })
 require("theme")
