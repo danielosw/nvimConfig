@@ -1,5 +1,17 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-vim.o.shell = "pwsh.exe"
+function Iswindows()
+	if (package.config:sub(1,1) == "\\")
+		then
+			return true
+		else
+			return false
+		end
+end
+
+if (Iswindows())
+	then
+		vim.o.shell = "pwsh.exe"
+	end
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git", "clone", "--filter=blob:none",
@@ -14,14 +26,6 @@ function IsNotNeovide()
     else
         return false
     end
-end
-function Iswindows()
-	if (package.config:sub(1,1) == "\\")
-		then
-			return true
-		else
-			return false
-		end
 end
 if (Iswindows())
 	then
