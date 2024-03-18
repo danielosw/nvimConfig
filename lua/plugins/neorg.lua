@@ -21,5 +21,7 @@ return{
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
     end,
+    lazy = true,
+    ft = "markdown",
 
 }
