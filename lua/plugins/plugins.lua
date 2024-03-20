@@ -74,12 +74,6 @@ return {
             listener.after.event_initialized["dapui_config"] = function()
                 require("dapui").open()
             end
-            listener.before.event_terminated["dapui_config"] = function()
-                require("dapui").close()
-            end
-            listener.before.event_exited["dapui_config"] = function()
-                require("dapui").close()
-            end
         end
     }, {
         'nvim-telescope/telescope.nvim',
