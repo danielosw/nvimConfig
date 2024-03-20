@@ -33,7 +33,7 @@ dap.configurations.python = {
 	if Iswindows() then
 		return 'C:\\Users\\lorde\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'	
 	else
-		return '/usr/bin/python'
+		return vim.fn.exepath('python')
       end
       end
     end;
@@ -58,7 +58,7 @@ function setupDap(temp)
 				if Iswindows() then
 					catpath = "\\venv\\scripts\\python"
 				else
-					catpath = "/venv/scripts/python"
+					catpath = "/venv/bin/python"
 				end
 				cb({
 					type = 'executable',
