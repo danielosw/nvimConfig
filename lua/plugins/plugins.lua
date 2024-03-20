@@ -10,7 +10,7 @@ return {
 	"zaldih/themery.nvim", "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig",
     "nvimtools/none-ls.nvim", "jay-babu/mason-null-ls.nvim", 
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "Mofiqul/dracula.nvim",
-    "mfussenegger/nvim-dap-python", "hrsh7th/cmp-path",
+     "hrsh7th/cmp-path",
     "mhartington/formatter.nvim", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-vsnip", "nvim-lualine/lualine.nvim", "hrsh7th/vim-vsnip", "Canop/nvim-bacon",  
     "AckslD/swenv.nvim", {'stevearc/dressing.nvim', opts = {}}, {

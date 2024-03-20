@@ -144,9 +144,6 @@ if not vim.g.neovide then
     })
 end
 local dap, dapui = require("dap"), require("dapui")
-local debugpy = Mason_registry.get_package("debugpy") -- note that this will error if you provide a non-existent package name
-local masonDebugPath = debugpy:get_install_path() -- returns a string like "/home/user/.local/share/nvim/mason/packages/codelldb"
-require('dap-python').setup(masonDebugPath .. "\\venv\\Scripts\\python", {})
 dap.listeners.after.event_initialized["dapui_config"] =
     function() dapui.open() end
 dap.listeners.before.event_terminated["dapui_config"] =
