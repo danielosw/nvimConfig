@@ -39,6 +39,21 @@ dap.configurations.python = {
     end;
   },
 }
+dap.configurations.cpp = {
+	{
+		name = "Launch file",
+    		type = "codelldb",
+    		request = "launch",
+    		program = function()
+      			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    		end,
+    		cwd = '${workspaceFolder}',
+    		stopOnEntry = false,
+	}
+}
+dap.configurations.c = dap.configurations.cpp
+
+dap.configurations.rust = dap.configurations.cpp
 function setupDap(temp)
 	if temp == "debugpy" then
 		dap.adapters.python = function(cb, config)
@@ -71,6 +86,21 @@ function setupDap(temp)
 			end
 
 		end
+	end
+	if temp == "codelldb" then
+		if Iswindows() then
+			catpath = "\\extension\\adapter\\codelldb"
+		else
+			catpath = "/extension/adapter/codelldb"
+		end
+		local templldb = Mason_registry.get_package('codelldb')
+		dap.adapters.codelldb = {
+		type = 'server',
+		port = "${port}",
+		executable={
+			command = templldb:get_install_path() .. catpath,
+			args = {"--port", "${port}"},}
+		}
 	end
 end
 -- Get a list of all installed daps
