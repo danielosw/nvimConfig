@@ -1,1 +1,1 @@
-return { 'kosayoda/nvim-lightbulb' }
+return { "kosayoda/nvim-lightbulb" }

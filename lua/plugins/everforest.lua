@@ -1,1 +1,1 @@
-return {"neanias/everforest-nvim"}
+return { "neanias/everforest-nvim" }

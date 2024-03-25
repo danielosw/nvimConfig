@@ -1,1 +1,1 @@
-return {"scottmckendry/cyberdream.nvim"}
+return { "scottmckendry/cyberdream.nvim" }
