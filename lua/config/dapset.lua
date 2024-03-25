@@ -29,11 +29,7 @@ dap.configurations.python = {
 			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 				return cwd .. "/.venv/bin/python"
 			else
-				if Iswindows() then
-					return "C:\\Users\\lorde\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
-				else
-					return vim.fn.exepath("python")
-				end
+				return vim.fn.exepath("python")
 			end
 		end,
 	},
