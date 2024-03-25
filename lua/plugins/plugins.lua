@@ -14,7 +14,6 @@ return {
 	"jay-babu/mason-null-ls.nvim",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
-	"Mofiqul/dracula.nvim",
 	"hrsh7th/cmp-path",
 	"mhartington/formatter.nvim",
 	"hrsh7th/cmp-cmdline",

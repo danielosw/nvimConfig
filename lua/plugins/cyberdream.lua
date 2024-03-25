@@ -1,1 +1,0 @@
-return { "scottmckendry/cyberdream.nvim" }
