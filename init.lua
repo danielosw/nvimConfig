@@ -20,19 +20,19 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 pythonPath = function()
-			local cwd = vim.fn.getcwd()
-			if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-				return cwd .. "/venv/bin/python"
-			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-				return cwd .. "/.venv/bin/python"
-			elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
-				return cwd .. "\\venv\\Scripts\\python.exe"
-			elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
-				return cwd .. "\\.venv\\Scripts\\python.exe"
-			else
-				return vim.fn.exepath("python")
-			end
-		end
+	local cwd = vim.fn.getcwd()
+	if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+		return cwd .. "/venv/bin/python"
+	elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+		return cwd .. "/.venv/bin/python"
+	elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
+		return cwd .. "\\venv\\Scripts\\python.exe"
+	elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+		return cwd .. "\\.venv\\Scripts\\python.exe"
+	else
+		return vim.fn.exepath("python")
+	end
+end
 vim.opt.rtp:prepend(lazypath)
 function IsNotNeovide()
 	if not vim.g.neovide then
@@ -123,15 +123,15 @@ nls = require("null-ls")
 require("mason-null-ls").setup({
 	automatic_installation = false,
 	handlers = {
-	mypy = function(source_name, methods)
-		nls.register(nls.builtins.diagnostics.mypy.with({
-		extra_args = function()
-   			return { "--python-executable", pythonPath() }
-   		end}))
-	end
-	}})	
-	
-
+		mypy = function(source_name, methods)
+			nls.register(nls.builtins.diagnostics.mypy.with({
+				extra_args = function()
+					return { "--python-executable", pythonPath() }
+				end,
+			}))
+		end,
+	},
+})
 
 require("null-ls").setup({
 	sources = {
@@ -238,7 +238,7 @@ require("swenv").setup({
 
 -- nvim cmp config
 local cmp = require("cmp")
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
@@ -269,21 +269,21 @@ cmp.setup({
 		--{ name = 'snippy' }, -- For snippy users.
 	}, { { name = "buffer" } }),
 	formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text',
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                     -- can also be a function to dynamically calculate max width such as 
-                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			-- can also be a function to dynamically calculate max width such as
+			-- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
-        return vim_item
-      end
-    })
-  }
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function(entry, vim_item)
+				return vim_item
+			end,
+		}),
+	},
 })
 
 -- Set configuration for specific filetype.
