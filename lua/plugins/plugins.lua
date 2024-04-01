@@ -12,11 +12,6 @@ return {
 	"Canop/nvim-bacon",
 	"AckslD/swenv.nvim",
 	{ "stevearc/dressing.nvim", opts = {} },
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-	},
 	"williamboman/mason.nvim",
 	{
 		"mfussenegger/nvim-dap",
@@ -55,7 +50,6 @@ return {
 			require("windows").setup()
 		end,
 	},
-	{ "anuvyklack/animation.nvim", cond = IsNotNeovide },
 	"mfussenegger/nvim-lint",
 	{
 		"utilyre/barbecue.nvim",
@@ -64,16 +58,7 @@ return {
 		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	},
-	{ "folke/neodev.nvim", opts = {} },
+		{ "folke/neodev.nvim", opts = {} },
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -104,7 +89,22 @@ return {
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 	{ "karb94/neoscroll.nvim", cond = IsNotNeovide },
+	{"saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+        require('crates').setup()
+    end,
+},
+"jvgrootveld/telescope-zoxide",
+	{"iamcco/markdown-preview.nvim",
+	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+	build = "cd app && yarn install",
+	init = function()
+		vim.g.mkdp_filetypes = { "markdown" }
+	end,
+	ft = { "markdown" },
+},
+
 }
