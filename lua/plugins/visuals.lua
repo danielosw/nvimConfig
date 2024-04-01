@@ -1,15 +1,16 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	"HiPhish/rainbow-delimiters.nvim",
-	{"folke/noice.nvim",
-	event = "VeryLazy",
-	opts = {},
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
-	},
-		{
+	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -25,6 +26,4 @@ return {
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-
-
 }
