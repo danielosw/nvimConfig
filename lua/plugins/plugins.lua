@@ -7,20 +7,8 @@ function IsNotNeovide()
 end
 
 return {
-	"zaldih/themery.nvim",
 	"nvim-lua/plenary.nvim",
-	"neovim/nvim-lspconfig",
-	"nvimtools/none-ls.nvim",
-	"jay-babu/mason-null-ls.nvim",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
 	"mhartington/formatter.nvim",
-	"hrsh7th/cmp-cmdline",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-vsnip",
-	"nvim-lualine/lualine.nvim",
-	"hrsh7th/vim-vsnip",
 	"Canop/nvim-bacon",
 	"AckslD/swenv.nvim",
 	{ "stevearc/dressing.nvim", opts = {} },
@@ -30,7 +18,6 @@ return {
 		dependencies = "nvim-tree/nvim-web-devicons",
 	},
 	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
 	{
 		"mfussenegger/nvim-dap",
 		keys = {

@@ -1,4 +1,5 @@
 return {
+	"zaldih/themery.nvim",
 	{ "catppuccin/nvim", name = "catppuccin" },
 	"neanias/everforest-nvim",
 	"scottmckendry/cyberdream.nvim",
