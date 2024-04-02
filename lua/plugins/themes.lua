@@ -28,4 +28,5 @@ return {
 	{ "folke/tokyonight.nvim", priority = 200 },
 	{ "EdenEast/nightfox.nvim", priority = 200 },
 	{ "Mofiqul/dracula.nvim", priority = 200 },
+	{ "navarasu/onedark.nvim", priority = 200 },
 }
