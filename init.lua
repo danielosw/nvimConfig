@@ -47,7 +47,7 @@ end
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
-
+vim.o.guifont = "CaskaydiaCove Nerd Font"
 require("lazy").setup("plugins")
 
 require("noice").setup({
@@ -353,7 +353,7 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 if vim.g.neovide then
 	vim.g.neovide_theme = "auto"
 	vim.g.neovide_no_idle = true
-	vim.o.guifont = "CaskaydiaCove Nerd Font" -- text below applies for VimScript
+	-- text below applies for VimScript
 end
 if vim.g.neovide then
 	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
