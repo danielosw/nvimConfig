@@ -83,11 +83,6 @@ require("noice").setup({
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
-require("bufferline").setup({
-	options = {
-		separator_style = "slant",
-	},
-})
 
 vim.api.nvim_create_autocmd("TermResponse", {
 	once = true,
