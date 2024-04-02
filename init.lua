@@ -49,22 +49,7 @@ vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
 
 require("lazy").setup("plugins")
-themes = {}
-for _, value in pairs(vim.fn.getcompletion("", "color")) do
-	themes[#themes + 1] = value
-end
-if Iswindows() then
-	themeconfig = "~/appdata/local/nvim/lua/theme.lua"
-else
-	themeconfig = "~/.config/nvim/lua/theme.lua"
-end
 
-require("themery").setup({
-	themes = themes,
-	livePreview = true,
-	themeConfigFile = themeconfig,
-})
-require("theme")
 require("noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
