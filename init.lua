@@ -41,7 +41,7 @@ function IsNotNeovide()
 		return false
 	end
 end
-if Iswindows() then
+if Iswindows() ~= true then
 	vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 end
 vim.g.mapleader = ","
