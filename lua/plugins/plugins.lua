@@ -51,13 +51,6 @@ return {
 		end,
 	},
 	"mfussenegger/nvim-lint",
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
-		opts = {},
-	},
 	{ "folke/neodev.nvim", opts = {} },
 	{
 		"rcarriga/nvim-dap-ui",

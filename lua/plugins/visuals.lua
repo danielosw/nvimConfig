@@ -22,6 +22,7 @@ return {
 			})
 		end,
 	},
+	"SmiteshP/nvim-navic",
 	{ "anuvyklack/animation.nvim", cond = IsNotNeovide },
 	{
 		"nvim-neo-tree/neo-tree.nvim",

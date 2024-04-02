@@ -118,10 +118,19 @@ require("null-ls").setup({
 		-- Anything not supported by mason.
 	},
 })
+local navic = require("nvim-navic")
 require("lualine").setup({
 	options = {
 		theme = "auto",
 	},
+	winbar = {
+        lualine_c = {
+            {
+                "navic",
+                color_correction = "dynamic",
+                navic_opts = nil
+            }
+        }}
 })
 if not vim.g.neovide then
 	require("neoscroll").setup({
@@ -162,9 +171,13 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		end
 	end
 end
-
+on_attach = function(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
+end
 for _, lsp in ipairs(lspservers) do
-	lspconfig[lsp].setup({ capabilities = capabilities })
+	lspconfig[lsp].setup({ capabilities = capabilities, on_attach = on_attach})
 end
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
