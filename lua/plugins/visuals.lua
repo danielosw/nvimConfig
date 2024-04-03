@@ -22,7 +22,6 @@ return {
 			})
 		end,
 	},
-	"SmiteshP/nvim-navic",
 	{ "anuvyklack/animation.nvim", cond = IsNotNeovide },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -40,5 +39,12 @@ return {
 		config = function()
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
+	},
+	{
+		"Bekaboo/dropbar.nvim",
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
 	},
 }

@@ -6,6 +6,7 @@ return {
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do
 				themes[#themes + 1] = value
 			end
+
 			if package.config:sub(1, 1) == "\\" then
 				themeconfig = "~/appdata/local/nvim/lua/theme.lua"
 			else
