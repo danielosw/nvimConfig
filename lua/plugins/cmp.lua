@@ -4,8 +4,19 @@ return {
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-vsnip",
-	"hrsh7th/vim-vsnip",
+	"saadparwaiz1/cmp_luasnip",
 	"onsails/lspkind.nvim",
-	"rafamadriz/friendly-snippets",
+	{"L3MON4D3/LuaSnip",
+	config = function()
+		require("luasnip.loaders.from_vscode").lazy_load()
+	end,
+	build = function ()
+		if package.config:sub(1, 1) == "\\" then
+			return
+		else
+			return "make install_jsregexp"
+		end
+	end,
+	dependencies = { "rafamadriz/friendly-snippets" },
+	}
 }
