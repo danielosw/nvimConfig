@@ -49,7 +49,6 @@ vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
 vim.o.guifont = "CaskaydiaCove Nerd Font"
 require("lazy").setup("plugins")
-
 require("noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -68,7 +67,6 @@ require("noice").setup({
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
-
 vim.api.nvim_create_autocmd("TermResponse", {
 	once = true,
 	callback = function()
