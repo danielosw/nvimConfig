@@ -6,6 +6,7 @@ return {
 	"hrsh7th/nvim-cmp",
 	"saadparwaiz1/cmp_luasnip",
 	"onsails/lspkind.nvim",
+
 	{
 		"L3MON4D3/LuaSnip",
 		config = function()
@@ -18,6 +19,6 @@ return {
 				return "make install_jsregexp"
 			end
 		end,
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets", "molleweide/LuaSnip-snippets.nvim" },
 	},
 }
