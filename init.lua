@@ -67,12 +67,14 @@ require("noice").setup({
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
-vim.api.nvim_create_autocmd("TermResponse", {
+--[[vim.api.nvim_create_autocmd("TermResponse", {
 	once = true,
 	callback = function()
 		vim.cmd("q")
 	end,
 })
+]]
+--
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>bc", "<cmd>te bacon<CR>", { noremap = true })
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>!", "<cmd>BaconLoad<CR><cmd>w<CR><cmd>BaconNext<CR>", { noremap = true })
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>bl", "<cmd>BaconList<CR>", { noremap = true })
@@ -163,8 +165,10 @@ end
 for _, lsp in ipairs(lspservers) do
 	lspconfig[lsp].setup({ capabilities = capabilities })
 end
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -214,6 +218,7 @@ require("swenv").setup({
 })
 
 -- nvim cmp config
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 cmp.setup({
@@ -221,7 +226,7 @@ cmp.setup({
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 
 			--require('snippy').expand_snippet(args.body) -- For `snippy` users.
 			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
@@ -241,7 +246,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		--{ name = "vsnip" }, -- For vsnip users.
-		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = "luasnip" }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		--{ name = 'snippy' }, -- For snippy users.
 	}, { { name = "buffer" } }),
@@ -341,6 +346,7 @@ require("formatter").setup({
 		},
 	},
 })
+
 local builtin = require("telescope.builtin")
 require("telescope").load_extension("zoxide")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
