@@ -356,6 +356,9 @@ if vim.g.neovide then
 end
 require("nvim-lightbulb").setup({
 	autocmd = { enabled = true },
+	ignore = {
+		clients = { "ruff_lsp" },
+	},
 })
 -- Allow clipboard copy paste in neovim
 vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
