@@ -32,7 +32,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", tag = 'v0.9.2' },
 
 	{
 		"goolord/alpha-nvim",
