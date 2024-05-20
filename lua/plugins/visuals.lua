@@ -12,7 +12,6 @@ return {
 	},
 	{
 		"akinsho/bufferline.nvim",
-		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({
@@ -32,7 +31,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", tag = "v0.9.2" },
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
 	{
 		"goolord/alpha-nvim",
