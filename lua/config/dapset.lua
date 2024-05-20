@@ -70,8 +70,6 @@ dap.configurations.typescript = {
 		end,
 	},
 }
-dap.configuration.html = dap.configuration.typescript
-dap.configuration.javascript = dap.configuration.typescript
 function setupDap(temp)
 	if temp == "debugpy" then
 		dap.adapters.python = function(cb, config)
