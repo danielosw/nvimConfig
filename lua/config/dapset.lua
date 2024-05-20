@@ -51,8 +51,27 @@ dap.configurations.cpp = {
 	},
 }
 dap.configurations.c = dap.configurations.cpp
-
 dap.configurations.rust = dap.configurations.cpp
+dap.configurations.typescript = {
+	{
+		name = "Debug with Firefox",
+		type = "firefox",
+		request = "launch",
+		reAttach = true,
+		url = "http://localhost:3000",
+		webRoot = "${workspaceFolder}",
+		firefoxExecutable = function()
+			if Iswindows() then
+				-- Not yet tested
+				return vim.fn.exepath("firefox")
+			else
+				return "/usr/bin/firefox"
+			end
+		end,
+	},
+}
+dap.configuration.html = dap.configuration.typescript
+dap.configuration.javascript = dap.configuration.typescript
 function setupDap(temp)
 	if temp == "debugpy" then
 		dap.adapters.python = function(cb, config)
@@ -99,6 +118,19 @@ function setupDap(temp)
 				command = templldb:get_install_path() .. catpath,
 				args = { "--port", "${port}" },
 			},
+		}
+	end
+	if temp == "firefox-debug-adapter" then
+		if Iswindows() then
+			catpath = "\\dist\\adapter.bundle.js"
+		else
+			catpath = "/dist/adapter.bundle.js"
+		end
+		local tempfox = Mason_registry.get_package("firefox-debug-adapter")
+		dap.adapters.firefox = {
+			type = "executable",
+			command = "node",
+			args = tempfox:get_install_path() .. catpath,
 		}
 	end
 end
