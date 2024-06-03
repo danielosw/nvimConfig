@@ -68,7 +68,12 @@ return {
 		end,
 	},
 	"mfussenegger/nvim-lint",
-	{ "folke/neodev.nvim", opts = {} },
+	{ "folke/lazydev.nvim", ft = "lua",
+	opts = {
+		library = {
+		},
+},
+},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },

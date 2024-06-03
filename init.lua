@@ -80,10 +80,6 @@ require("noice").setup({
 require("ibl").setup()
 mason = require("mason").setup()
 require("mason-nvim-dap").setup()
-require("neodev").setup({
-	library = { plugins = { "nvim-dap-ui" }, types = true },
-	...,
-})
 require("mason-lspconfig").setup()
 require("config.dapset")
 require("dapui").setup()
@@ -193,13 +189,17 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
+	sources = cmp.config.sources(
+		function()
+			tab = {}
+			tab.insert{{name ="nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "lazydev", group_index = 0}}
 		--{ name = "vsnip" }, -- For vsnip users.
-		{ name = "luasnip" }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		--{ name = 'snippy' }, -- For snippy users.
-	}, { { name = "buffer" } }),
+			--- Check if lazydev is loaded
+		end
+
+		),
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol_text",
@@ -296,7 +296,6 @@ require("formatter").setup({
 		},
 	},
 })
-
 require("telescope").load_extension("zoxide")
 if vim.g.neovide then
 	vim.g.neovide_theme = "auto"
