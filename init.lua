@@ -1,4 +1,3 @@
-local treesitter = require("vim.treesitter")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 function Iswindows()
 	if package.config:sub(1, 1) == "\\" then
@@ -77,7 +76,6 @@ require("noice").setup({
 ]]
 --
 
-require("ibl").setup()
 mason = require("mason").setup()
 require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
@@ -189,17 +187,17 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
-	sources = cmp.config.sources(
-		function()
-			tab = {}
-			tab.insert{{name ="nvim_lsp"}, {name = "luasnip"}, {name = "buffer"}, {name = "lazydev", group_index = 0}}
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, {
+			name = "lazydev",
+			group_index = 0,}}
+		
+
 		--{ name = "vsnip" }, -- For vsnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		--{ name = 'snippy' }, -- For snippy users.
-			--- Check if lazydev is loaded
-		end
-
-		),
+		--- Check if lazydev is loaded
+),
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol_text",
@@ -301,10 +299,4 @@ if vim.g.neovide then
 	vim.g.neovide_theme = "auto"
 	vim.g.neovide_no_idle = true
 end
-require("nvim-lightbulb").setup({
-	autocmd = { enabled = true },
-	ignore = {
-		clients = { "ruff_lsp" },
-	},
-})
 require("config.keybinds")
