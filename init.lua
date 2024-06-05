@@ -75,41 +75,10 @@ require("noice").setup({
 })
 ]]
 --
-
-mason = require("mason").setup()
-require("mason-nvim-dap").setup()
-require("mason-lspconfig").setup()
+-- Why do I need to specify lua.config? I don't know but it does not work otherwise.
+require("lua.config.mason")
 require("config.dapset")
 require("dapui").setup()
-Linters = {}
-Mason_registry = require("mason-registry")
-for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
-	for _, type in ipairs(pkg_info.spec.categories) do
-		if type == "Linter" then
-			Linters[#Linters + 1] = pkg_info.name
-		end
-	end
-end
-require("lint").linters_by_ft = { markdown = { Linters } }
-nls = require("null-ls")
-require("mason-null-ls").setup({
-	automatic_installation = false,
-	handlers = {
-		mypy = function(source_name, methods)
-			nls.register(nls.builtins.diagnostics.mypy.with({
-				extra_args = function()
-					return { "--python-executable", pythonPath() }
-				end,
-			}))
-		end,
-	},
-})
-
-require("null-ls").setup({
-	sources = {
-		-- Anything not supported by mason.
-	},
-})
 require("lualine").setup({
 	options = {
 		theme = "auto",
@@ -144,20 +113,6 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
 -- Setup language servers.
-local lspconfig = require("lspconfig")
-local lspservers = {}
-local masonconfig = require("mason-lspconfig")
-for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
-	for _, type in ipairs(pkg_info.spec.categories) do
-		if type == "LSP" then
-			lspservers[#lspservers + 1] = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
-		end
-	end
-end
-for _, lsp in ipairs(lspservers) do
-	lspconfig[lsp].setup({ capabilities = capabilities })
-end
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 
@@ -187,17 +142,22 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, {
-			name = "lazydev",
-			group_index = 0,}}
-		
+	sources = cmp.config.sources(
+		{
+			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
+			{ name = "buffer" },
+			{
+				name = "lazydev",
+				group_index = 0,
+			},
+		}
 
 		--{ name = "vsnip" }, -- For vsnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		--{ name = 'snippy' }, -- For snippy users.
 		--- Check if lazydev is loaded
-),
+	),
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol_text",
