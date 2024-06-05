@@ -75,8 +75,7 @@ require("noice").setup({
 })
 ]]
 --
--- Why do I need to specify lua.config? I don't know but it does not work otherwise.
-require("lua.config.mason")
+require("config.mason")
 require("config.dapset")
 require("dapui").setup()
 require("lualine").setup({
