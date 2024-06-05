@@ -43,5 +43,3 @@ end
 for _, lsp in ipairs(lspservers) do
 	lspconfig[lsp].setup({ capabilities = capabilities })
 end
-
-

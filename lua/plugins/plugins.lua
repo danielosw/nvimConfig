@@ -68,9 +68,13 @@ return {
 		end,
 	},
 	"mfussenegger/nvim-lint",
-	{ "folke/lazydev.nvim", ft = "lua", opts = {
-		library = {},
-	} },
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = { "lazy.nvim", "mason.nvim", "nvim-dap", "nvim-cmp" },
+		},
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
