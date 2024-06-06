@@ -4,7 +4,7 @@ return {
 	"jay-babu/mason-null-ls.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	{
-		"kosayoda/nvim-lightbulb",
+		"danielosw/nvim-lightbulb",
 		config = function()
 			require("nvim-lightbulb").setup({
 				autocmd = { enabled = true },
