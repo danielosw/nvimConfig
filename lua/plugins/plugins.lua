@@ -9,7 +9,6 @@ end
 return {
 	"nvim-lua/plenary.nvim",
 	"mhartington/formatter.nvim",
-	{ "Canop/nvim-bacon", ft = "rust" },
 	{
 		"AckslD/swenv.nvim",
 		ft = "python",
@@ -31,16 +30,6 @@ return {
 	{ "stevearc/dressing.nvim", opts = {} },
 	"williamboman/mason.nvim",
 
-	{
-		"anuvyklack/windows.nvim",
-		dependencies = { "anuvyklack/middleclass" },
-		config = function()
-			vim.o.winwidth = 10
-			vim.o.winminwidth = 10
-			vim.o.equalalways = false
-			require("windows").setup()
-		end,
-	},
 	"mfussenegger/nvim-lint",
 	{
 		"folke/lazydev.nvim",
@@ -80,21 +69,11 @@ return {
 		priority = 49,
 	},
 	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
-	{ "karb94/neoscroll.nvim", cond = IsNotNeovide },
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		config = function()
 			require("crates").setup()
 		end,
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
 	},
 }

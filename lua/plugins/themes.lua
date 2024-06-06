@@ -1,6 +1,6 @@
 return {
 	{
-		"danielosw/luathemery.nvim",
+		"zaldih/themery.nvim",
 		config = function()
 			themes = {}
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do

@@ -21,7 +21,6 @@ return {
 			})
 		end,
 	},
-	{ "anuvyklack/animation.nvim", cond = IsNotNeovide },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
