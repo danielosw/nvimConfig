@@ -89,6 +89,7 @@ return {
 		},
 		-- automatically open/close the DAP UI when starting/stopping the debugger
 		config = function()
+			require("dapui").setup()
 			local listener = require("dap").listeners
 			listener.after.event_initialized["dapui_config"] = function()
 				require("dapui").open()

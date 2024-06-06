@@ -18,7 +18,23 @@ require("mason-null-ls").setup({
 		mypy = function(source_name, methods)
 			nls.register(nls.builtins.diagnostics.mypy.with({
 				extra_args = function()
-					return { "--python-executable", pythonPath() }
+					return {
+						"--python-executable",
+						function()
+							local cwd = vim.fn.getcwd()
+							if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+								return cwd .. "/venv/bin/python"
+							elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+								return cwd .. "/.venv/bin/python"
+							elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
+								return cwd .. "\\venv\\Scripts\\python.exe"
+							elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+								return cwd .. "\\.venv\\Scripts\\python.exe"
+							else
+								return vim.fn.exepath("python")
+							end
+						end,
+					}
 				end,
 			}))
 		end,
