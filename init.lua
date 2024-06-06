@@ -27,8 +27,19 @@ function IsNotNeovide()
 		return false
 	end
 end
-if Iswindows() ~= true then
-	vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+-- add mise shims to path if on linux and shims path exits
+if
+	Iswindows() ~= true
+	and function()
+			local temp = vim.fn.chdir("~/.local/share/mise/shims")
+			if temp ~= "" then
+				vim.fn.chdir(temp)
+			end
+			return temp
+		end
+		~= ""
+then
+	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","

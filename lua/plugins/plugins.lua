@@ -30,33 +30,7 @@ return {
 	},
 	{ "stevearc/dressing.nvim", opts = {} },
 	"williamboman/mason.nvim",
-	{
-		"mfussenegger/nvim-dap",
-		keys = {
-			{
-				"<leader>dc",
-				function()
-					require("dap").continue()
-				end,
-				desc = "Start/Continue Debugger",
-			},
-			{
-				"<leader>db",
-				function()
-					require("dap").toggle_breakpoint()
-				end,
-				desc = "Add Breakpoint",
-			},
-			{
-				"<leader>dt",
-				function()
-					require("dap").terminate()
-				end,
-				desc = "Terminate Debugger",
-			},
-		},
-	},
-	"jay-babu/mason-nvim-dap.nvim",
+
 	{
 		"anuvyklack/windows.nvim",
 		dependencies = { "anuvyklack/middleclass" },
@@ -74,36 +48,6 @@ return {
 		opts = {
 			library = { "lazy.nvim", "mason.nvim", "nvim-dap", "nvim-cmp" },
 		},
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-		keys = {
-			{
-				"<leader>du",
-				function()
-					require("dapui").toggle()
-				end,
-				desc = "Toggle Debugger UI",
-			},
-		},
-		-- automatically open/close the DAP UI when starting/stopping the debugger
-		config = function()
-			require("dapui").setup()
-			local listener = require("dap").listeners
-			listener.after.event_initialized["dapui_config"] = function()
-				require("dapui").open()
-			end
-		end,
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -144,7 +88,6 @@ return {
 			require("crates").setup()
 		end,
 	},
-	"jvgrootveld/telescope-zoxide",
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
