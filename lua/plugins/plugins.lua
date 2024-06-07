@@ -27,10 +27,8 @@ return {
 			})
 		end,
 	},
-	{ "stevearc/dressing.nvim", opts = {} },
 	"williamboman/mason.nvim",
 
-	"mfussenegger/nvim-lint",
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",

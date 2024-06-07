@@ -79,11 +79,11 @@ cmp.setup.cmdline(":", {
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
 -- linter autocommand
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	callback = function()
-		require("lint").try_lint()
-	end,
-})
+--vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--	callback = function()
+--		require("lint").try_lint()
+--	end,
+--})
 local util = require("formatter.util")
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands

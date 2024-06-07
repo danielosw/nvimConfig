@@ -6,17 +6,23 @@ local lspconfig = require("lspconfig")
 local lspservers = {}
 local masonconfig = require("mason-lspconfig")
 Mason_registry = require("mason-registry")
+local navic = require('nvim-navic')
+local on_attach = function(client, bufnr)
+    -- navic
+    navic.attach(client, bufnr)
+
+end
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
 		if type == "Linter" then
 			Linters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
-			lspconfig[lsp].setup({capabilities = capabilities})
-	end
+			lspconfig[lsp].setup{on_attach = on_attach}
+		end
 	end
 end
-require("lint").linters_by_ft = { markdown = { Linters } }
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 nls = require("null-ls")
 require("mason-null-ls").setup({
 	automatic_installation = false,

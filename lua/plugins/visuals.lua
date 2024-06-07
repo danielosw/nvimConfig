@@ -38,11 +38,17 @@ return {
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
 	},
-	{
-		"Bekaboo/dropbar.nvim",
-		-- optional, but required for fuzzy finder support
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
+		"SmiteshP/nvim-navic",
+		opts = {
+					lsp = {
+						auto_attach = false,
+						preference = nil,
+					},
+					highlight = true,
+					separator = " > ",
+					depth_limit = 10,
+					depth_limit_indicator = "..",
+
+			},
 	},
 }
