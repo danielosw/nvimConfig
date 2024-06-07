@@ -137,11 +137,7 @@ Daps = {}
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
 		if type == "DAP" then
-			Daps[#Daps + 1] = pkg_info.name
+			setupDap(pkg_info.name)
 		end
 	end
-end
--- Setup list of daps
-for _, dap in ipairs(Daps) do
-	setupDap(dap)
 end

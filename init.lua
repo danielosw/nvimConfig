@@ -27,7 +27,7 @@ function IsNotNeovide()
 		return false
 	end
 end
--- add mise shims to path if on linux and shims path exits
+-- add mise shims to path if on linux and shims path exists
 if
 	Iswindows() ~= true
 	and function()
