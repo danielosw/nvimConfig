@@ -10,4 +10,3 @@ end
 
 require("telescope").load_extension("zoxide")
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-

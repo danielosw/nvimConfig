@@ -6,4 +6,4 @@
 A really weird and kinda complicated neovim config.
 You will need cmake, ripegrep, and fzf (and possibly more that I don't remember).  
 Note that one of the plugins is a personal fork of nvim-lightbulb due to it using depreciated code.  
-Also because of file path stuff, specifically me hard coding the paths to the themery file, it may or may not work on MacOS. It does work on both windows and linux however.
+Note that this is entirly tested on Windows and Linux, so due to some file path stuff it may not work on mac.

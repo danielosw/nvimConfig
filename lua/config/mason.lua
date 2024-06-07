@@ -6,11 +6,10 @@ local lspconfig = require("lspconfig")
 local lspservers = {}
 local masonconfig = require("mason-lspconfig")
 Mason_registry = require("mason-registry")
-local navic = require('nvim-navic')
+local navic = require("nvim-navic")
 local on_attach = function(client, bufnr)
-    -- navic
-    navic.attach(client, bufnr)
-
+	-- navic
+	navic.attach(client, bufnr)
 end
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
@@ -18,7 +17,7 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 			Linters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
-			lspconfig[lsp].setup{on_attach = on_attach}
+			lspconfig[lsp].setup({ on_attach = on_attach })
 		end
 	end
 end

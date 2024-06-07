@@ -14,9 +14,9 @@ return {
 			end
 
 			if package.config:sub(1, 1) == "\\" then
-				themeconfig = "~/appdata/local/nvim/lua/theme.lua"
+				themeconfig = vim.fn.stdpath("config") .. "\\lua\\theme.lua"
 			else
-				themeconfig = "~/.config/nvim/lua/theme.lua"
+				themeconfig = vim.fn.stdpath("config") .. "/lua/theme.lua"
 			end
 
 			require("themery").setup({
