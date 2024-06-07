@@ -1,2 +1,7 @@
-This is literally just to make it easier for me to sync my neovim config across devices and operating systems.
-You probably don't want to use this, but just in case you need git, cmake, fzf, ripgrep, and probably some other things it will tell you when you start it up.
+<a href="https://dotfyle.com/danielosw/nvimconfig"><img src="https://dotfyle.com/danielosw/nvimconfig/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/danielosw/nvimconfig"><img src="https://dotfyle.com/danielosw/nvimconfig/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/danielosw/nvimconfig"><img src="https://dotfyle.com/danielosw/nvimconfig/badges/plugin-manager?style=flat" /></a>
+ > Install requires Neovim 0.10+.
+
+A really weird and kinda complicated neovim config.
+You will need cmake, ripegrep, and fzf.
