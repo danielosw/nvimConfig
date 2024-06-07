@@ -38,7 +38,7 @@ return {
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
 	},
-		"SmiteshP/nvim-navic",
+		{"SmiteshP/nvim-navic",
 		opts = {
 					lsp = {
 						auto_attach = false,
@@ -50,5 +50,6 @@ return {
 					depth_limit_indicator = "..",
 
 			},
-	},
-}
+		},
+	}
+
