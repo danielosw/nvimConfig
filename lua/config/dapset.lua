@@ -70,6 +70,8 @@ dap.configurations.typescript = {
 		end,
 	},
 }
+-- Takes in a string and configs a matching dap.
+-- The reason I do it this way is so it does not crash if a dap is not installed, because some of configs require it to be installed in mason.
 function setupDap(temp)
 	if temp == "debugpy" then
 		dap.adapters.python = function(cb, config)
@@ -132,8 +134,7 @@ function setupDap(temp)
 		}
 	end
 end
--- Get a list of all installed daps
-Daps = {}
+-- Get a list of all installed daps and setup any found
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
 		if type == "DAP" then

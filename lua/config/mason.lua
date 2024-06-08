@@ -11,8 +11,11 @@ local on_attach = function(client, bufnr)
 	-- navic
 	navic.attach(client, bufnr)
 end
+-- loop through packages.
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
+	-- Loop through the type asigned to the package.
 	for _, type in ipairs(pkg_info.spec.categories) do
+		-- Do things based on type.
 		if type == "Linter" then
 			Linters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
@@ -21,11 +24,14 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		end
 	end
 end
+-- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 nls = require("null-ls")
+-- Setup none-ls
 require("mason-null-ls").setup({
 	automatic_installation = false,
 	handlers = {
+		-- Change mypy to refrence a venv.
 		mypy = function(source_name, methods)
 			nls.register(nls.builtins.diagnostics.mypy.with({
 				extra_args = function()
