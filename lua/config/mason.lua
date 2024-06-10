@@ -9,7 +9,9 @@ Mason_registry = require("mason-registry")
 local navic = require("nvim-navic")
 local on_attach = function(client, bufnr)
 	-- navic
-	navic.attach(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 end
 -- loop through packages.
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
