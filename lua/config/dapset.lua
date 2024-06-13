@@ -1,6 +1,9 @@
-dap = require("dap")
 Mason_registry = require("mason-registry")
 -- define windows
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
 function Iswindows()
 	if package.config:sub(1, 1) == "\\" then
 		return true

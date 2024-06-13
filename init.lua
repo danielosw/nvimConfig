@@ -48,10 +48,9 @@ vim.opt.termguicolors = true
 vim.o.guifont = "CaskaydiaCove Nerd Font"
 require("lazy").setup("plugins")
 -- load the configs
-require("config.noice")
+require("config.ui")
 require("config.mason")
 require("config.dapset")
 require("config.cmp")
 require("config.keybinds")
 require("config.neovide")
-require("config.misc")

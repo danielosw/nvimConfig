@@ -16,3 +16,10 @@ require("noice").setup({
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
+require("lualine").setup({
+	options = {
+		theme = "auto",
+	},
+})
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
