@@ -1,11 +1,3 @@
-function IsNotNeovide()
-	if not vim.g.neovide then
-		return true
-	else
-		return false
-	end
-end
-
 return {
 	"nvim-lua/plenary.nvim",
 	"mhartington/formatter.nvim",

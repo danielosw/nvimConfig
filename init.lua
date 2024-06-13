@@ -20,13 +20,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-function IsNotNeovide()
-	if not vim.g.neovide then
-		return true
-	else
-		return false
-	end
-end
 -- add mise shims to path if on linux and shims path exists
 if
 	Iswindows() ~= true
