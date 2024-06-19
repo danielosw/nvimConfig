@@ -16,6 +16,7 @@ require("noice").setup({
 		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
+require("telescope").load_extension("noice")
 require("lualine").setup({
 	options = {
 		theme = "auto",
