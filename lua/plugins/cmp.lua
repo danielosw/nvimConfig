@@ -13,12 +13,12 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 		build = function()
-			if package.config:sub(1, 1) == "\\" then
-				return
-			else
-				return "make install_jsregexp"
+		-- check if luarocks is installed
+		 if vim.fn.exepath("luarocks") ~= "" then
+				-- install or update jsregexp locally
+				vim.cmd("te luarocks --local install jsregexp")
 			end
-		end,
+			end,
 		dependencies = { "rafamadriz/friendly-snippets", "molleweide/LuaSnip-snippets.nvim" },
 	},
 }
