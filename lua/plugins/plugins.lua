@@ -1,6 +1,5 @@
 return {
 	"nvim-lua/plenary.nvim",
-	"mhartington/formatter.nvim",
 	{
 		"AckslD/swenv.nvim",
 		ft = "python",
