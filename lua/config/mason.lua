@@ -26,6 +26,10 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		end
 	end
 end
+-- setup gdscript lsp
+if vim.fn.exepath("godot") ~= "" then
+	require'lspconfig'.gdscript.setup{}
+end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 nls = require("null-ls")
