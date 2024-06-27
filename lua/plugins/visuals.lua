@@ -61,4 +61,7 @@ return {
 			depth_limit_indicator = "..",
 		},
 	},
+	{
+		"RRethy/vim-illuminate"
+	},
 }
