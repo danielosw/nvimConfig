@@ -7,6 +7,7 @@ function Iswindows()
 	end
 end
 if Iswindows() then
+	-- set shell to powershell on windows.
 	vim.o.shell = "pwsh.exe"
 end
 if not vim.loop.fs_stat(lazypath) then
@@ -34,7 +35,7 @@ if
 then
 	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
--- config thing that need to be changed before plugins are loaded
+-- config things that need to be changed before plugins are loaded
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
