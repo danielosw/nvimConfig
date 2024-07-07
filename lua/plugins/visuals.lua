@@ -62,6 +62,10 @@ return {
 		},
 	},
 	{
-		"RRethy/vim-illuminate"
+		"RRethy/vim-illuminate",
+	},
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
 	},
 }
