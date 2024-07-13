@@ -30,6 +30,10 @@ end
 if vim.fn.exepath("godot") ~= "" then
 	require("lspconfig").gdscript.setup({})
 end
+-- setup fish-lsp
+if vim.fn.exepath("fish-lsp") ~= "" then
+	require("lspconfig").fish_lsp.setup({})
+end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 nls = require("null-ls")
