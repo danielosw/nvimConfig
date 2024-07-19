@@ -13,18 +13,11 @@ return {
 				}
 			end
 
-			if package.config:sub(1, 1) == "\\" then
-				themeconfig = vim.fn.stdpath("config") .. "\\lua\\theme.lua"
-			else
-				themeconfig = vim.fn.stdpath("config") .. "/lua/theme.lua"
-			end
 
 			require("themery").setup({
 				themes = themes,
 				livePreview = true,
-				themeConfigFile = themeconfig,
 			})
-			require("theme")
 		end,
 		priority = 100,
 	},
