@@ -5,10 +5,11 @@ setuptheme = function(theme)
 			name = "cyberdream dark",
 			colorscheme = "cyberdream",
 			before = [[
+	vim.o.background = "dark",
 	require("cyberdream").setup({
 	    theme = {
-		variant = "default"
-	    }
+		variant = "default",
+	    },
 	})
 	]],
 			after = [[
@@ -19,11 +20,64 @@ setuptheme = function(theme)
 			name = "cyberdream light",
 			colorscheme = "cyberdream",
 			before = [[
+vim.o.background = "light",
+			
 	require("cyberdream").setup({
 	    theme = {
-		variant = "light"
-	    }
+		variant = "light",
+	    },
 	})
+	]],
+			after = [[
+	vim.cmd("hi WinBar guibg=NONE")
+	]],
+		}
+	end
+	if theme == "neon" then
+		themes[#themes + 1] = {
+
+			name = "neon default",
+			colorscheme = "neon",
+			before = [[
+vim.o.background = "dark"
+			
+	vim.g.neon_style = "default"
+	]],
+			after = [[
+	vim.cmd("hi WinBar guibg=NONE")
+	]],
+		}
+		themes[#themes + 1] = {
+			name = "neon doom",
+			colorscheme = "neon",
+			before = [[
+vim.o.background = "dark"
+			
+	vim.g.neon_style = "doom"
+	]],
+			after = [[
+	vim.cmd("hi WinBar guibg=NONE")
+	]],
+		}
+		themes[#themes + 1] = {
+			name = "neon dark",
+			colorscheme = "neon",
+			before = [[
+vim.o.background = "dark"
+			
+	vim.g.neon_style = "dark"
+	]],
+			after = [[
+	vim.cmd("hi WinBar guibg=NONE")
+	]],
+		}
+		themes[#themes + 1] = {
+			name = "neon light",
+			colorscheme = "neon",
+			before = [[
+vim.o.background = "light"
+			
+	vim.g.neon_style = "light"
 	]],
 			after = [[
 	vim.cmd("hi WinBar guibg=NONE")
@@ -33,8 +87,8 @@ setuptheme = function(theme)
 	return themes
 end
 tablemerge = function(tableone, tabletwo)
-	for k, v in pairs(tabletwo) do
-		tableone[k] = v
+	for _, v in ipairs(tabletwo) do
+		tableone[#tableone + 1] = v
 	end
 	return tableone
 end
@@ -43,7 +97,7 @@ return {
 		"zaldih/themery.nvim",
 		config = function()
 			themes = {}
-			specialthemes = { "cyberdream" }
+			specialthemes = { "cyberdream", "neon" }
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do
 				-- MASSIVE hack to simplify checking for some themes.
 				Temp = true
