@@ -30,11 +30,11 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		opts = {},
-		config = function ()
-			require('overseer').setup({
-				templates = {"builtin"},
+		config = function()
+			require("overseer").setup({
+				templates = { "builtin" },
 			})
-		end
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
