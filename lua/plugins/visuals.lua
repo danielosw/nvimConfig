@@ -17,6 +17,7 @@ return {
 			require("bufferline").setup({
 				options = {
 					separator_style = "slant",
+					themable = true,
 				},
 			})
 		end,

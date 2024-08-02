@@ -32,8 +32,7 @@ vim.o.background = "light",
 	vim.cmd("hi WinBar guibg=NONE")
 	]],
 		}
-	end
-	if theme == "neon" then
+	elseif theme == "neon" then
 		themes[#themes + 1] = {
 
 			name = "neon default",
@@ -83,6 +82,23 @@ vim.o.background = "light"
 	vim.cmd("hi WinBar guibg=NONE")
 	]],
 		}
+	elseif theme == "oxocarbon" then
+		themes[#themes + 1] = {
+			name = "oxocarbon dark",
+			colorscheme = "oxocarbon",
+			before = [[
+	    vim.o.background = "dark"
+	    ]],
+			after = [[vim.cmd("hi WinBar guibg=NONE")]],
+		}
+		themes[#themes + 1] = {
+			name = "oxocarbon light",
+			colorscheme = "oxocarbon",
+			before = [[
+	    vim.o.background = "light"
+	    ]],
+			after = [[vim.cmd("hi WinBar guibg=NONE")]],
+		}
 	end
 	return themes
 end
@@ -97,7 +113,7 @@ return {
 		"zaldih/themery.nvim",
 		config = function()
 			themes = {}
-			specialthemes = { "cyberdream", "neon" }
+			specialthemes = { "cyberdream", "neon", "oxocarbon" }
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do
 				-- MASSIVE hack to simplify checking for some themes.
 				Temp = true
@@ -127,6 +143,7 @@ return {
 		end,
 		priority = 100,
 	},
+
 	{ "catppuccin/nvim", name = "catppuccin", priority = 200 },
 	{ "neanias/everforest-nvim", priority = 200 },
 	{ "scottmckendry/cyberdream.nvim", priority = 200 },
@@ -134,5 +151,6 @@ return {
 	{ "folke/tokyonight.nvim", priority = 200 },
 	{ "EdenEast/nightfox.nvim", priority = 200 },
 	{ "Mofiqul/dracula.nvim", priority = 200 },
+	{ "nyoom-engineering/oxocarbon.nvim", priority = 200 },
 	{ "navarasu/onedark.nvim", priority = 200 },
 }
