@@ -7,10 +7,12 @@ local lspservers = {}
 local masonconfig = require("mason-lspconfig")
 Mason_registry = require("mason-registry")
 local navic = require("nvim-navic")
+local navbud = require("nvim-navbuddy")
 local on_attach = function(client, bufnr)
 	-- navic
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
+		navbud.attach(client, bufnr)
 	end
 end
 -- loop through packages.
@@ -35,7 +37,7 @@ if vim.fn.exepath("fish-lsp") ~= "" then
 	require("lspconfig").fish_lsp.setup({})
 end
 -- Define navic winbar.
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 nls = require("null-ls")
 -- Setup none-ls
 require("mason-null-ls").setup({
