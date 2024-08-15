@@ -39,17 +39,7 @@ end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 nls = require("null-ls")
--- Setup none-ls
-require("mason-null-ls").setup({
-	automatic_installation = false,
-	handlers = {
-		-- Change mypy to refrence a venv.
-		mypy = function(source_name, methods)
-			nls.register(nls.builtins.diagnostics.mypy.with({
-				extra_args = function()
-					return {
-						"--python-executable",
-						function()
+function getvenv()
 							local cwd = vim.fn.getcwd()
 							if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
 								return cwd .. "/venv/bin/python"
@@ -62,7 +52,18 @@ require("mason-null-ls").setup({
 							else
 								return vim.fn.exepath("python")
 							end
-						end,
+						end
+-- Setup none-ls
+require("mason-null-ls").setup({
+	automatic_installation = false,
+	handlers = {
+		-- Change mypy to refrence a venv.
+		mypy = function(source_name, methods)
+			nls.register(nls.builtins.diagnostics.mypy.with({
+				extra_args = function()
+					return {
+						"--python-executable",
+						getvenv(),
 					}
 				end,
 			}))
