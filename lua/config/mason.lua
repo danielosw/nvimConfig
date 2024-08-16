@@ -40,19 +40,19 @@ end
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 nls = require("null-ls")
 function getvenv()
-							local cwd = vim.fn.getcwd()
-							if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-								return cwd .. "/venv/bin/python"
-							elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-								return cwd .. "/.venv/bin/python"
-							elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
-								return cwd .. "\\venv\\Scripts\\python.exe"
-							elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
-								return cwd .. "\\.venv\\Scripts\\python.exe"
-							else
-								return vim.fn.exepath("python")
-							end
-						end
+	local cwd = vim.fn.getcwd()
+	if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+		return cwd .. "/venv/bin/python"
+	elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+		return cwd .. "/.venv/bin/python"
+	elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
+		return cwd .. "\\venv\\Scripts\\python.exe"
+	elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+		return cwd .. "\\.venv\\Scripts\\python.exe"
+	else
+		return vim.fn.exepath("python")
+	end
+end
 -- Setup none-ls
 require("mason-null-ls").setup({
 	automatic_installation = false,

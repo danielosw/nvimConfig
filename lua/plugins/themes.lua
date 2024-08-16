@@ -99,6 +99,11 @@ vim.o.background = "light"
 	    ]],
 			after = [[vim.cmd("hi WinBar guibg=NONE")]],
 		}
+	elseif theme == "dracula" then
+		themes[#themes + 1] = {
+			name = "dracula",
+			colorscheme = "dracula",
+		}
 	end
 	return themes
 end
@@ -113,7 +118,7 @@ return {
 		"zaldih/themery.nvim",
 		config = function()
 			themes = {}
-			specialthemes = { "cyberdream", "neon", "oxocarbon" }
+			specialthemes = { "cyberdream", "neon", "oxocarbon", "dracula" }
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do
 				-- MASSIVE hack to simplify checking for some themes.
 				Temp = true
@@ -127,9 +132,6 @@ return {
 					themes[#themes + 1] = {
 						name = value,
 						colorscheme = value,
-						after = [[
-					vim.cmd("hi WinBar guibg=NONE")
-					]],
 					}
 				else
 					themes = tablemerge(themes, setuptheme(value))
@@ -150,7 +152,24 @@ return {
 	{ "rafamadriz/neon", priority = 200 },
 	{ "folke/tokyonight.nvim", priority = 200 },
 	{ "EdenEast/nightfox.nvim", priority = 200 },
-	{ "Mofiqul/dracula.nvim", priority = 200 },
+	{
+		"Mofiqul/dracula.nvim",
+		priority = 200,
+		config = function()
+			require("dracula").setup({
+			    show_end_of_buffer = false,
+			    transparent_bg = false,
+			    italic_comment = false,
+			    lualine_bg_color = nil,
+				colors = {},
+				overrides = {
+					WinBar = { bg = "bg" },
+					WinBarNC = { bg = "bg" },
+					TabLineSel = {bg = "bg"}
+				},
+			})
+		end,
+	},
 	{ "nyoom-engineering/oxocarbon.nvim", priority = 200 },
 	{ "navarasu/onedark.nvim", priority = 200 },
 }
