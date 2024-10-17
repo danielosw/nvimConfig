@@ -7,5 +7,5 @@ A really weird and kinda complicated neovim config.
 You will need cmake, ripegrep, yarn and fzf (and possibly more that I don't remember).  
 Note that one of the plugins is a personal fork of nvim-lightbulb due to it using depreciated code.  
 Also note that this is entirly tested on Windows and Linux, so due to some file path stuff it may not work on mac.  
-As well, despite using Lazy.nvim this is not using LazyVim, or anyother distribution for that matter.
+As well, despite using Lazy.nvim this is not using LazyVim, or anyother distribution for that matter.  
 This isn't dead im just happy right now with the setup.
