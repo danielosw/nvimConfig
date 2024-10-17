@@ -10,4 +10,3 @@
     - [Which key](https://github.com/folke/which-key.nvim)
     - [Todo comments](https://github.com/folke/todo-comments.nvim)
     - [Harpoon](https://github.com/ThePrimeagen/harpoon)
-    - [project.nvim](https://github.com/ahmedkhalf/project.nvim)
