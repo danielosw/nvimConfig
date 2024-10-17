@@ -157,15 +157,15 @@ return {
 		priority = 200,
 		config = function()
 			require("dracula").setup({
-			    show_end_of_buffer = false,
-			    transparent_bg = false,
-			    italic_comment = false,
-			    lualine_bg_color = nil,
+				show_end_of_buffer = false,
+				transparent_bg = false,
+				italic_comment = false,
+				lualine_bg_color = nil,
 				colors = {},
 				overrides = {
 					WinBar = { bg = "bg" },
 					WinBarNC = { bg = "bg" },
-					TabLineSel = {bg = "bg"}
+					TabLineSel = { bg = "bg" },
 				},
 			})
 		end,

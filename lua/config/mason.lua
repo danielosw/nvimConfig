@@ -2,12 +2,14 @@ mason = require("mason").setup()
 require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
 Linters = {}
+Formaters = {}
 local lspconfig = require("lspconfig")
 local lspservers = {}
 local masonconfig = require("mason-lspconfig")
 Mason_registry = require("mason-registry")
 local navic = require("nvim-navic")
 local navbud = require("nvim-navbuddy")
+local conform = require("conform")
 local on_attach = function(client, bufnr)
 	-- navic
 	if client.server_capabilities.documentSymbolProvider then
@@ -22,12 +24,41 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		-- Do things based on type.
 		if type == "Linter" then
 			Linters[#Linters + 1] = pkg_info.name
+		elseif type == "Formatter" then
+			Formaters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			lspconfig[lsp].setup({ on_attach = on_attach })
 		end
 	end
 end
+conform.setup({
+	formatters_by_ft = {
+		lua = function(bufnr)
+			if conform.get_formatter_info("stylua", bufnr).available then
+				return { "stylua" }
+			else
+				return nil
+			end
+		end,
+		rust = function(bufnr)
+			if conform.get_formatter_info("rustftm", bufnr).available then
+				return { "rustftm" }
+			else
+				return { lsp_format = "fallback" }
+			end
+		end,
+
+		python = function(bufnr)
+			if require("conform").get_formatter_info("ruff_format", bufnr).available then
+				return { "ruff_format" }
+			else
+				return { "isort" }
+			end
+		end,
+	},
+	["*"] = { "codespell" },
+})
 -- setup gdscript lsp
 if vim.fn.exepath("godot") ~= "" then
 	require("lspconfig").gdscript.setup({})
