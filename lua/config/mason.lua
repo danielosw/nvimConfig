@@ -32,13 +32,20 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		end
 	end
 end
+haveformat = function(bufnr, formatter)
+	if conform.get_formatter_info(formatter, bufnr).available then
+			return { formatter }
+	else
+		return { lsp_format = "fallback" }
+	end
+end
 conform.setup({
 	formatters_by_ft = {
 		lua = function(bufnr)
 			if conform.get_formatter_info("stylua", bufnr).available then
 				return { "stylua" }
 			else
-				return {lsp_format = "fallback"}
+				return { lsp_format = "fallback" }
 			end
 		end,
 		rust = function(bufnr)
@@ -55,6 +62,18 @@ conform.setup({
 			else
 				return { "isort" }
 			end
+		end,
+		typescript = function(bufnr)
+			return haveformat(bufnr, "biome-check")
+		end,
+		javascript = function(bufnr)
+			return haveformat(bufnr, "biome-check")
+		end,
+		html = function(bufnr)
+			return haveformat(bufnr, "biome-check")
+		end,
+		css = function(bufnr)
+			return haveformat(bufnr, "biome-check")
 		end,
 	},
 	["*"] = { "codespell" },
