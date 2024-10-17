@@ -2,7 +2,7 @@ mason = require("mason").setup()
 require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
 Linters = {}
-Formaters = {}
+Formatters = {}
 local lspconfig = require("lspconfig")
 local lspservers = {}
 local masonconfig = require("mason-lspconfig")
@@ -19,13 +19,13 @@ local on_attach = function(client, bufnr)
 end
 -- loop through packages.
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
-	-- Loop through the type asigned to the package.
+	-- Loop through the type assigned to the package.
 	for _, type in ipairs(pkg_info.spec.categories) do
 		-- Do things based on type.
 		if type == "Linter" then
 			Linters[#Linters + 1] = pkg_info.name
 		elseif type == "Formatter" then
-			Formaters[#Linters + 1] = pkg_info.name
+			Formatters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			lspconfig[lsp].setup({ on_attach = on_attach })
@@ -38,7 +38,7 @@ conform.setup({
 			if conform.get_formatter_info("stylua", bufnr).available then
 				return { "stylua" }
 			else
-				return nil
+				return {lsp_format = "fallback"}
 			end
 		end,
 		rust = function(bufnr)
@@ -59,6 +59,7 @@ conform.setup({
 	},
 	["*"] = { "codespell" },
 })
+
 -- setup gdscript lsp
 if vim.fn.exepath("godot") ~= "" then
 	require("lspconfig").gdscript.setup({})
@@ -88,7 +89,7 @@ end
 require("mason-null-ls").setup({
 	automatic_installation = false,
 	handlers = {
-		-- Change mypy to refrence a venv.
+		-- Change mypy to reference a venv.
 		mypy = function(source_name, methods)
 			nls.register(nls.builtins.diagnostics.mypy.with({
 				extra_args = function()
