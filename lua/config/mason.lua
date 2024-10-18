@@ -75,6 +75,12 @@ conform.setup({
 		css = function(bufnr)
 			return haveformat(bufnr, "biome-check")
 		end,
+		c = function(bufnr)
+		    return haveformat(bufnr, "clang-format")
+		end,
+		cpp = function(bufnr)
+		    return haveformat(bufnr, "clang-format")
+		end,
 	},
 	["*"] = { "codespell" },
 })
