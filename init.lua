@@ -46,6 +46,7 @@ require("lazy").setup("plugins")
 -- load the configs
 require("config.ui")
 require("config.mason")
+require("config.conform")
 require("config.dapset")
 require("config.cmp")
 require("config.keybinds")
