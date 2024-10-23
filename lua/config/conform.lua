@@ -48,6 +48,9 @@ conform.setup({
 		cpp = function(bufnr)
 		    return haveformat(bufnr, "clang-format")
 		end,
+		go = function(bufnr)
+		    return haveformat(bufnr, "gofmt")
+		end,
 	},
 	["*"] = { "codespell" },
 })
