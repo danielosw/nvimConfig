@@ -26,7 +26,8 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 			Linters[#Linters + 1] = pkg_info.name
 		elseif type == "Formatter" then
 			Formatters[#Linters + 1] = pkg_info.name
-		elseif type == "LSP" then
+		elseif type == "LSP" and pkg_info.name ~= "ruff" then
+
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			lspconfig[lsp].setup({ on_attach = on_attach })
 		end
