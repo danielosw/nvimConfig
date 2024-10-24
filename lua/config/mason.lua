@@ -42,6 +42,10 @@ end
 if vim.fn.exepath("fish-lsp") ~= "" then
 	require("lspconfig").fish_lsp.setup({})
 end
+-- setup ruff
+if vim.fn.exepath("ruff") ~= "" then
+    require("lspconfig").ruff.setup({})
+end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 nls = require("null-ls")
