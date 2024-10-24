@@ -27,7 +27,6 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 		elseif type == "Formatter" then
 			Formatters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
-
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			lspconfig[lsp].setup({ on_attach = on_attach })
 		end
@@ -44,7 +43,13 @@ if vim.fn.exepath("fish-lsp") ~= "" then
 end
 -- setup ruff
 if vim.fn.exepath("ruff") ~= "" then
-    require("lspconfig").ruff.setup({})
+	require("lspconfig").ruff.setup({
+		init_options = {
+			settings = {
+				configurationPreference = "filesystemFirst",
+			},
+		},
+	})
 end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
