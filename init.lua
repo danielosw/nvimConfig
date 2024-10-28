@@ -39,7 +39,7 @@ end
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
-vim.o.guifont = "CaskaydiaCove Nerd Font"
+vim.o.guifont = "CaskaydiaCove NF"
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 require("lazy").setup("plugins")
