@@ -38,10 +38,9 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
 	local menu = require("menu")
 	vim.cmd.exec('"normal! \\<RightMouse>"')
-	local options = vim.bo.ft == "neo-tree" or "default"
-	if options == "default" and #require("menu.state").bufids < 1 then
+	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+	if #require("menu.state").bufids < 1 then
 		menu.open(options, { mouse = true })
-	else
 end
 end)
 if vim.g.neovide then

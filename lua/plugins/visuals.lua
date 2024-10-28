@@ -31,15 +31,6 @@ return {
 		end,
 	},
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	},
-	{
 		"rachartier/tiny-devicons-auto-colors.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -98,5 +89,20 @@ return {
 		dependencies = {
 			"nvchad/volt",
 		},
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+
+			-- optionally enable 24-bit colour
+			vim.opt.termguicolors = true
+			require("nvim-tree").setup()
+		end,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		event ="VeryLazy",
 	},
 }
