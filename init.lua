@@ -41,11 +41,7 @@ vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
 -- For some reason the pacman package the the scoop package have this font named diferently
 function getFont()
-	if Iswindows() then
-	    return "Cascadia Code NF"
-	else
 	    return "CaskaydiaCove NF"
-	end
 end
 vim.o.guifont = getFont()
 vim.o.softtabstop = 4
