@@ -86,4 +86,17 @@ return {
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
+	{
+		"nvchad/menu",
+		dependencies = {
+			"nvchad/volt",
+		},
+	},
+	{
+		"nvchad/minty",
+		cmd = { "Shades", "Huefy" },
+		dependencies = {
+			"nvchad/volt",
+		},
+	},
 }
