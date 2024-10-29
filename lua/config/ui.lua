@@ -23,3 +23,4 @@ require("lualine").setup({
 	},
 })
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+-- If we in in a directory open neotree
