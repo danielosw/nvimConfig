@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	"HiPhish/rainbow-delimiters.nvim",
+	"danielosw/rainbow-delimiters.nvim",
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
