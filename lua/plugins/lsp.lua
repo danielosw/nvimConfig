@@ -9,7 +9,8 @@ return {
 			require("nvim-lightbulb").setup({
 				autocmd = { enabled = true },
 				ignore = {
-					clients = { "ruff_lsp" },
+				    -- Annoyingly this causes dotfyle to thing we have ruff explcitly installed when we don't
+					clients = { "ruff" },
 				},
 			})
 		end,
