@@ -42,12 +42,21 @@ if vim.fn.exepath("fish-lsp") ~= "" then
 	require("lspconfig").fish_lsp.setup({})
 end
 -- setup ruff
+ruffconfig = function ()
+	if Iswindows() then
+	    return vim.env.HOME .. "\\AppData\\Roaming\\ruff\\ruff.toml"
+
+	else
+	    return vim.env.HOME .. "/.config/ruff/ruff.toml"
+	end
+    end
 if vim.fn.exepath("ruff") ~= "" then
 	require("lspconfig").ruff.setup({
 		init_options = {
 			settings = {
 				configurationPreference = "filesystemFirst",
-			},
+			configuration = ruffconfig(),
+			    },
 		},
 	})
 end
