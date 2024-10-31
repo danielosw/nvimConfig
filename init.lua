@@ -44,7 +44,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 -- For some reason the pacman package the the scoop package have this font named diferently
 function getFont()
-	    return "CaskaydiaCove NF"
+	return "CaskaydiaCove NF"
 end
 vim.o.guifont = getFont()
 vim.o.softtabstop = 4

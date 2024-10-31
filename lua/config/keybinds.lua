@@ -41,7 +41,7 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
 	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
 	if #require("menu.state").bufids < 1 then
 		menu.open(options, { mouse = true })
-end
+	end
 end)
 if vim.g.neovide then
 	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save

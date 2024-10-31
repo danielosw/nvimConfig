@@ -1,7 +1,7 @@
 local conform = require("conform")
 haveformat = function(bufnr, formatter)
 	if conform.get_formatter_info(formatter, bufnr).available then
-			return { formatter }
+		return { formatter }
 	else
 		return { lsp_format = "fallback" }
 	end
@@ -43,15 +43,14 @@ conform.setup({
 			return haveformat(bufnr, "biome-check")
 		end,
 		c = function(bufnr)
-		    return haveformat(bufnr, "clang-format")
+			return haveformat(bufnr, "clang-format")
 		end,
 		cpp = function(bufnr)
-		    return haveformat(bufnr, "clang-format")
+			return haveformat(bufnr, "clang-format")
 		end,
 		go = function(bufnr)
-		    return haveformat(bufnr, "gofmt")
+			return haveformat(bufnr, "gofmt")
 		end,
 	},
 	["*"] = { "codespell" },
 })
-
