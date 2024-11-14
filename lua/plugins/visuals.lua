@@ -82,12 +82,6 @@ return {
 		opts = {},
 	},
 	{
-		"nvchad/menu",
-		dependencies = {
-			"nvchad/volt",
-		},
-	},
-	{
 		"nvchad/minty",
 		cmd = { "Shades", "Huefy" },
 		dependencies = {

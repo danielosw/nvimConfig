@@ -36,19 +36,26 @@ then
 	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
 -- config things that need to be changed before plugins are loaded
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+local g =vim.g
+local opt = vim.opt
+local o = vim.o
+g.mapleader = ","
+g.maplocalleader = ","
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 vim.loader.enable()
-vim.opt.termguicolors = true
+opt.termguicolors = true
 -- For some reason the pacman package the the scoop package have this font named diferently
 function getFont()
 	return "CaskaydiaCove NF"
 end
-vim.o.guifont = getFont()
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+o.guifont = getFont()
+g.python_recommended_style = 0 
+g.rust_recommended_style= 0
+opt.smartindent = true
+opt.expandtab = false
+o.tabstop = 4
+o.number = true
 require("lazy").setup("plugins")
 -- load the configs
 require("config.ui")
