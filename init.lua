@@ -52,7 +52,6 @@ end
 o.guifont = getFont()
 g.python_recommended_style = 0 
 g.rust_recommended_style= 0
-opt.smartindent = true
 opt.expandtab = false
 o.tabstop = 4
 o.number = true
