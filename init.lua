@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 function Iswindows()
 	if package.config:sub(1, 1) == "\\" then
@@ -37,7 +36,7 @@ then
 	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
 -- config things that need to be changed before plugins are loaded
-local g =vim.g
+local g = vim.g
 local opt = vim.opt
 local o = vim.o
 g.mapleader = ","
@@ -51,8 +50,8 @@ function getFont()
 	return "CaskaydiaCove NF"
 end
 o.guifont = getFont()
-g.python_recommended_style = 0 
-g.rust_recommended_style= 0
+g.python_recommended_style = 0
+g.rust_recommended_style = 0
 opt.expandtab = false
 o.tabstop = 4
 o.shiftwidth = 4
@@ -66,4 +65,3 @@ require("config.dapset")
 require("config.cmp")
 require("config.keybinds")
 require("config.neovide")
-
