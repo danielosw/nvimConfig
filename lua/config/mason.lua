@@ -31,29 +31,32 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 			if lsp ~= "pylsp" then
 				lspconfig[lsp].setup({ on_attach = on_attach })
 			else
-			lspconfig[lsp].setup({
-				settings = {
-					['pylsp'] = {
-						plugins ={
-							autopep8 = {
-								enabled = false
+				lspconfig[lsp].setup({
+					on_attach = function(client, bufnr)
+						navic.attach(client, bufnr)
+					end,
+					settings = {
+						["pylsp"] = {
+							plugins = {
+								autopep8 = {
+									enabled = false,
+								},
+								mccabe = {
+									enabled = false,
+								},
+								pycodestyle = {
+									enabled = false,
+								},
+								pyflakes = {
+									enabled = false,
+								},
+								yapf = {
+									enabled = false,
+								},
 							},
-							mccabe = {
-								enabled = false
-							},
-							pycodestyle = {
-								enabled = false
-							},
-							pyflakes = {
-								enabled = false
-							},
-							yapf = {
-								enabled = false
-							},
-						}
-					}
-				},
-			})
+						},
+					},
+				})
 			end
 		end
 	end
