@@ -1,3 +1,4 @@
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 function Iswindows()
 	if package.config:sub(1, 1) == "\\" then
@@ -54,6 +55,7 @@ g.python_recommended_style = 0
 g.rust_recommended_style= 0
 opt.expandtab = false
 o.tabstop = 4
+o.shiftwidth = 4
 o.number = true
 require("lazy").setup("plugins")
 -- load the configs
@@ -64,3 +66,4 @@ require("config.dapset")
 require("config.cmp")
 require("config.keybinds")
 require("config.neovide")
+
