@@ -28,7 +28,33 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 			Formatters[#Linters + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
-			lspconfig[lsp].setup({ on_attach = on_attach })
+			if lsp ~= "pylsp" then
+				lspconfig[lsp].setup({ on_attach = on_attach })
+			else
+			lspconfig[lsp].setup({
+				settings = {
+					['pylsp'] = {
+						plugins ={
+							autopep8 = {
+								enabled = false
+							},
+							mccabe = {
+								enabled = false
+							},
+							pycodestyle = {
+								enabled = false
+							},
+							pyflakes = {
+								enabled = false
+							},
+							yapf = {
+								enabled = false
+							},
+						}
+					}
+				},
+			})
+			end
 		end
 	end
 end
