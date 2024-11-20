@@ -1,8 +1,7 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
--- Set header
-dashboard.section.header.val = {
+local headers = {{
     "                                                     ",
     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
     "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
@@ -11,7 +10,10 @@ dashboard.section.header.val = {
     "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
     "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     "                                                     ",
-}dashboard.section.buttons.val = {
+}
+}
+dashboard.section.header.val = headers[math.random(#headers)]
+dashboard.section.buttons.val = {
     dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "f", "󰱼  > Find file", ":Telescope find_files<CR>"),
     dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
