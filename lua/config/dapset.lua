@@ -11,6 +11,7 @@ function Iswindows()
 		return false
 	end
 end
+local windows = Iswindows()
 -- Define Daps
 dap.configurations.python = {
 	{
@@ -64,7 +65,7 @@ dap.configurations.typescript = {
 		url = "http://localhost:3000",
 		webRoot = "${workspaceFolder}",
 		firefoxExecutable = function()
-			if Iswindows() then
+			if windows then
 				-- Not yet tested
 				return vim.fn.exepath("firefox")
 			else
@@ -91,7 +92,7 @@ function setupDap(temp)
 				})
 			else
 				local pypath = Mason_registry.get_package("debugpy")
-				if Iswindows() then
+				if windows then
 					catpath = "\\venv\\scripts\\python"
 				else
 					catpath = "/venv/bin/python"
@@ -108,7 +109,7 @@ function setupDap(temp)
 		end
 	end
 	if temp == "codelldb" then
-		if Iswindows() then
+		if windows then
 			catpath = "\\extension\\adapter\\codelldb"
 		else
 			catpath = "/extension/adapter/codelldb"
@@ -124,7 +125,7 @@ function setupDap(temp)
 		}
 	end
 	if temp == "firefox-debug-adapter" then
-		if Iswindows() then
+		if windows then
 			catpath = "\\dist\\adapter.bundle.js"
 		else
 			catpath = "/dist/adapter.bundle.js"

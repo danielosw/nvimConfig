@@ -6,7 +6,8 @@ function Iswindows()
 		return false
 	end
 end
-if Iswindows() then
+local windows = Iswindows()
+if windows then
 	-- set shell to powershell on windows.
 	vim.o.shell = "pwsh.exe"
 end
@@ -23,7 +24,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- add mise shims to path if on linux and shims path exists
 if
-	Iswindows() ~= true
+	windows ~= true
 	and function()
 			local temp = vim.fn.chdir("~/.local/share/mise/shims")
 			if temp ~= "" then
