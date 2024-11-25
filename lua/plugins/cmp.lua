@@ -13,7 +13,7 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 		build = function()
-			if package.config:sub(1, 1) == "\\" then
+			if windows then
 				return
 			else
 				return "make install_jsregexp"

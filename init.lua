@@ -1,12 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-function Iswindows()
-	if package.config:sub(1, 1) == "\\" then
-		return true
-	else
-		return false
-	end
-end
-local windows = Iswindows()
 if windows then
 	-- set shell to powershell on windows.
 	vim.o.shell = "pwsh.exe"
@@ -22,17 +14,18 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+require("helpers.iswindows")
 -- add mise shims to path if on linux and shims path exists
 if
 	windows ~= true
 	and function()
-			local temp = vim.fn.chdir("~/.local/share/mise/shims")
-			if temp ~= "" then
-				vim.fn.chdir(temp)
-			end
-			return temp
+		local temp = vim.fn.chdir("~/.local/share/mise/shims")
+		if temp ~= "" then
+			vim.fn.chdir(temp)
 		end
-		~= ""
+		return temp
+	end
+	~= ""
 then
 	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
@@ -50,6 +43,7 @@ opt.termguicolors = true
 function getFont()
 	return "CaskaydiaCove NF"
 end
+
 o.guifont = getFont()
 g.python_recommended_style = 0
 g.rust_recommended_style = 0
