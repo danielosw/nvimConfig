@@ -1,6 +1,6 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
-
+local quotes = require("helpers.quotes")
 local headers = {{
     "                                                     ",
     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -21,7 +21,13 @@ local headers = {{
   [[██████  █████████████████████ ████ █████ █████ ████ ██████]],
 }
 }
+function footer()
+	
+end
 dashboard.section.header.val = headers[math.random(#headers)]
+--[[
+dashboard.section.footer.val =  Quotes[math.random(#Quotes)]
+]]--
 dashboard.section.buttons.val = {
     dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "f", "󰱼  > Find file", ":Telescope find_files<CR>"),
