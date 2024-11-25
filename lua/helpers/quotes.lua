@@ -1,21 +1,20 @@
 --[[
 This file is a list of quotes to randomly load on start
-]]--
+]]
+--
 Inspire = true
 Comedy = true
-Quotes = {
-	"I use Arch btw"
-}
+Quotes = {}
 --[[
 Vaugly inspiring
 --]]
 local inspire = {
 	"Strive for progress.",
-	"Nothing about use without us.",
+	"Nothing about us without us.",
 }
 if Inspire then
 	for i, v in ipairs(inspire) do
-		Quotes[#Quotes+1]=i
+		Quotes[#Quotes + 1] = v
 	end
 end
 --[[
@@ -26,6 +25,6 @@ local funny = {
 }
 if Comedy then
 	for i, v in ipairs(funny) do
-		Quotes[#Quotes+1] = i
+		Quotes[#Quotes + 1] = v
 	end
 end

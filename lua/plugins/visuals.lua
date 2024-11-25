@@ -48,8 +48,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-		end,
+		config = function() end,
 	},
 	{
 		"SmiteshP/nvim-navic",
