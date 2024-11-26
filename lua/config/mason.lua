@@ -72,7 +72,7 @@ if vim.fn.exepath("fish-lsp") ~= "" then
 end
 -- setup ruff
 ruffconfig = function()
-	if windows then
+	if Windows then
 		return vim.env.HOME .. "\\AppData\\Roaming\\ruff\\ruff.toml"
 	else
 		return vim.env.HOME .. "/.config/ruff/ruff.toml"

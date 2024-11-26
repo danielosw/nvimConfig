@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if windows then
+if Windows then
 	-- set shell to powershell on windows.
 	vim.o.shell = "pwsh.exe"
 end
@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("helpers.iswindows")
 -- add mise shims to path if on linux and shims path exists
 if
-	windows ~= true
+	Windows ~= true
 	and function()
 		local temp = vim.fn.chdir("~/.local/share/mise/shims")
 		if temp ~= "" then

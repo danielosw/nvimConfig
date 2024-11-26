@@ -1,5 +1,4 @@
 Mason_registry = require("mason-registry")
--- define windows
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
@@ -57,7 +56,7 @@ dap.configurations.typescript = {
 		url = "http://localhost:3000",
 		webRoot = "${workspaceFolder}",
 		firefoxExecutable = function()
-			if windows then
+			if Windows then
 				-- Not yet tested
 				return vim.fn.exepath("firefox")
 			else
@@ -84,7 +83,7 @@ function setupDap(temp)
 				})
 			else
 				local pypath = Mason_registry.get_package("debugpy")
-				if windows then
+				if Windows then
 					catpath = "\\venv\\scripts\\python"
 				else
 					catpath = "/venv/bin/python"
@@ -101,7 +100,7 @@ function setupDap(temp)
 		end
 	end
 	if temp == "codelldb" then
-		if windows then
+		if Windows then
 			catpath = "\\extension\\adapter\\codelldb"
 		else
 			catpath = "/extension/adapter/codelldb"
@@ -117,7 +116,7 @@ function setupDap(temp)
 		}
 	end
 	if temp == "firefox-debug-adapter" then
-		if windows then
+		if Windows then
 			catpath = "\\dist\\adapter.bundle.js"
 		else
 			catpath = "/dist/adapter.bundle.js"
