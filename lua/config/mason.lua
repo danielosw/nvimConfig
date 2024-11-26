@@ -17,15 +17,14 @@ local on_attach = function(client, bufnr)
 		navbud.attach(client, bufnr)
 	end
 end
+Daps = {}
 -- loop through packages.
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	-- Loop through the type assigned to the package.
 	for _, type in ipairs(pkg_info.spec.categories) do
 		-- Do things based on type.
-		if type == "Linter" then
-			Linters[#Linters + 1] = pkg_info.name
-		elseif type == "Formatter" then
-			Formatters[#Linters + 1] = pkg_info.name
+		if type == "DAP" then
+			Daps[#Daps+1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			if lsp ~= "pylsp" then

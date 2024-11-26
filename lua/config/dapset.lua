@@ -3,68 +3,8 @@ local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
--- Define Daps
-dap.configurations.python = {
-	{
-		-- The first three options are required by nvim-dap
-		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
-		request = "launch",
-		name = "Launch file",
+-- For preformence reasons Daps are now defined in ftplugin files
 
-		-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
-		program = "${file}", -- This configuration will launch the current file if used.
-		pythonPath = function()
-			-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-			-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-			-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-			local cwd = vim.fn.getcwd()
-			if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-				return cwd .. "/venv/bin/python"
-			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-				return cwd .. "/.venv/bin/python"
-			elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
-				return cwd .. "\\venv\\Scripts\\python.exe"
-			elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
-				return cwd .. "\\.venv\\Scripts\\python.exe"
-			else
-				return vim.fn.exepath("python")
-			end
-		end,
-	},
-}
-dap.configurations.cpp = {
-	{
-		name = "Launch file",
-		type = "codelldb",
-		request = "launch",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopOnEntry = false,
-	},
-}
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
-dap.configurations.typescript = {
-	{
-		name = "Debug with Firefox",
-		type = "firefox",
-		request = "launch",
-		reAttach = true,
-		url = "http://localhost:3000",
-		webRoot = "${workspaceFolder}",
-		firefoxExecutable = function()
-			if Windows then
-				-- Not yet tested
-				return vim.fn.exepath("firefox")
-			else
-				return "/usr/bin/firefox"
-			end
-		end,
-	},
-}
 -- Takes in a string and configs a matching dap.
 -- The reason I do it this way is so it does not crash if a dap is not installed, because some of configs require it to be installed in mason.
 function setupDap(temp)
@@ -130,10 +70,6 @@ function setupDap(temp)
 	end
 end
 -- Get a list of all installed daps and setup any found
-for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
-	for _, type in ipairs(pkg_info.spec.categories) do
-		if type == "DAP" then
-			setupDap(pkg_info.name)
-		end
+	for _, founddap in ipairs(Daps) do
+			setupDap(founddap)
 	end
-end

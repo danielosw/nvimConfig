@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	"danielosw/rainbow-delimiters.nvim",
+	"hiphish/rainbow-delimiters.nvim",
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -99,6 +99,5 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		event = "VeryLazy",
 	},
 }

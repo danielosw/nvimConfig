@@ -39,7 +39,7 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 vim.loader.enable()
 opt.termguicolors = true
--- For some reason the pacman package the the scoop package have this font named diferently
+-- Set custom font for neovide here
 function getFont()
 	return "CaskaydiaCove NF"
 end
