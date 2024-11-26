@@ -1,5 +1,4 @@
-local dap = require("dap")
-dap.configurations.python = {
+Dap.configurations.python = {
 	{
 		-- The first three options are required by nvim-dap
 		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`

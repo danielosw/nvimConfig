@@ -1,5 +1,4 @@
-dap = require("dap")
-dap.configurations.typescript = {
+Dap.configurations.typescript = {
 	{
 		name = "Debug with Firefox",
 		type = "firefox",

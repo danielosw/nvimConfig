@@ -1,5 +1,4 @@
-local dap = require("dap")
-dap.configurations.c = {
+Dap.configurations.c = {
 	{
 		name = "Launch file",
 		type = "codelldb",

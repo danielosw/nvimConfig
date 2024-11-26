@@ -1,5 +1,4 @@
-local dap = require("dap")
-dap.configurations.rust = {
+Dap.configurations.rust = {
 	{
 		name = "Launch file",
 		type = "codelldb",

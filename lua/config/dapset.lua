@@ -1,6 +1,7 @@
 Mason_registry = require("mason-registry")
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
+local  dapui =  require("dapui")
+Dap = require("dap")
+Dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
 -- For preformence reasons Daps are now defined in ftplugin files
@@ -9,7 +10,7 @@ end
 -- The reason I do it this way is so it does not crash if a dap is not installed, because some of configs require it to be installed in mason.
 function setupDap(temp)
 	if temp == "debugpy" then
-		dap.adapters.python = function(cb, config)
+		Dap.adapters.python = function(cb, config)
 			if config.request == "attach" then
 				local port = (config.connect or config).port
 				local host = (config.connect or config).host or "127.0.0.1"
@@ -46,7 +47,7 @@ function setupDap(temp)
 			catpath = "/extension/adapter/codelldb"
 		end
 		local templldb = Mason_registry.get_package("codelldb")
-		dap.adapters.codelldb = {
+		Dap.adapters.codelldb = {
 			type = "server",
 			port = "${port}",
 			executable = {
@@ -62,7 +63,7 @@ function setupDap(temp)
 			catpath = "/dist/adapter.bundle.js"
 		end
 		local tempfox = Mason_registry.get_package("firefox-debug-adapter")
-		dap.adapters.firefox = {
+		Dap.adapters.firefox = {
 			type = "executable",
 			command = "node",
 			args = tempfox:get_install_path() .. catpath,
