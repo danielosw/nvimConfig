@@ -62,13 +62,9 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 end
 
 -- setup gdscript lsp
-if vim.fn.exepath("godot") ~= "" then
-	require("lspconfig").gdscript.setup({})
-end
+require("lspconfig").gdscript.setup({})
 -- setup fish-lsp
-if vim.fn.exepath("fish-lsp") ~= "" then
-	require("lspconfig").fish_lsp.setup({})
-end
+require("lspconfig").fish_lsp.setup({})
 -- setup ruff
 ruffconfig = function()
 	if Windows then
@@ -77,7 +73,6 @@ ruffconfig = function()
 		return vim.env.HOME .. "/.config/ruff/ruff.toml"
 	end
 end
-if vim.fn.exepath("ruff") ~= "" then
 	require("lspconfig").ruff.setup({
 		init_options = {
 			settings = {
@@ -86,24 +81,9 @@ if vim.fn.exepath("ruff") ~= "" then
 			},
 		},
 	})
-end
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 nls = require("null-ls")
-function getvenv()
-	local cwd = vim.fn.getcwd()
-	if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-		return cwd .. "/venv/bin/python"
-	elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-		return cwd .. "/.venv/bin/python"
-	elseif vim.fn.executable(cwd .. "\\venv\\Scripts\\python.exe") == 1 then
-		return cwd .. "\\venv\\Scripts\\python.exe"
-	elseif vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
-		return cwd .. "\\.venv\\Scripts\\python.exe"
-	else
-		return vim.fn.exepath("python")
-	end
-end
 -- Setup none-ls
 require("mason-null-ls").setup({
 	automatic_installation = false,
@@ -114,7 +94,7 @@ require("mason-null-ls").setup({
 				extra_args = function()
 					return {
 						"--python-executable",
-						getvenv(),
+						PythonPath,
 					}
 				end,
 			}))
