@@ -51,9 +51,10 @@ opt.expandtab = false
 o.tabstop = 4
 o.shiftwidth = 4
 o.number = true
-require("helpers.python")
+require("helpers.wherepython")
 require("lazy").setup("plugins")
 -- load the configs
+require("helpers.inittypes")
 require("config.ui")
 require("config.mason")
 require("config.conform")
