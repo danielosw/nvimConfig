@@ -31,16 +31,16 @@ conform.setup({
 			end
 		end,
 		typescript = function(bufnr)
-			return haveformat(bufnr, "biome-check")
+			return haveformat(bufnr, "biome")
 		end,
 		javascript = function(bufnr)
-			return haveformat(bufnr, "biome-check")
+			return haveformat(bufnr, "biome")
 		end,
 		html = function(bufnr)
-			return haveformat(bufnr, "biome-check")
+			return haveformat(bufnr, "biome")
 		end,
 		css = function(bufnr)
-			return haveformat(bufnr, "biome-check")
+			return haveformat(bufnr, "biome")
 		end,
 		c = function(bufnr)
 			return haveformat(bufnr, "clang-format")
