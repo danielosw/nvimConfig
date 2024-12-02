@@ -27,7 +27,7 @@ conform.setup({
 			if require("conform").get_formatter_info("ruff_format", bufnr).available then
 				return { "ruff_format" }
 			else
-				return { "isort" }
+				return {lsp_format = "fallback"}
 			end
 		end,
 		typescript = function(bufnr)
