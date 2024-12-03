@@ -62,6 +62,7 @@ require("config.dapset")
 require("config.cmp")
 require("config.keybinds")
 require("config.alpha")
+require("config.nougat")
 if vim.g.neovide then
 	require("config.neovide")
 end

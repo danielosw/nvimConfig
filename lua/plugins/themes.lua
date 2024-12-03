@@ -160,7 +160,6 @@ return {
 				show_end_of_buffer = false,
 				transparent_bg = false,
 				italic_comment = false,
-				lualine_bg_color = nil,
 				colors = {},
 				overrides = {
 					WinBar = { bg = "bg" },

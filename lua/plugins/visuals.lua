@@ -1,5 +1,5 @@
 return {
-	"nvim-lualine/lualine.nvim",
+	 "MunifTanjim/nougat.nvim",
 	"hiphish/rainbow-delimiters.nvim",
 	{
 		"folke/noice.nvim",

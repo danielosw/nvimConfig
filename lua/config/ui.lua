@@ -17,10 +17,5 @@ require("noice").setup({
 	},
 })
 require("telescope").load_extension("noice")
-require("lualine").setup({
-	options = {
-		theme = "auto",
-	},
-})
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 -- If we in in a directory open neotree
