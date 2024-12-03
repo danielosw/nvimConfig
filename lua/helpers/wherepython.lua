@@ -1,6 +1,6 @@
 local cwd = vim.fn.getcwd()
 
-function getPython()
+local function getPython()
 	do
 		if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 			return cwd .. "/.venv/bin/python"

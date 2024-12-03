@@ -1,5 +1,5 @@
 local conform = require("conform")
-haveformat = function(bufnr, formatter)
+local haveformat = function(bufnr, formatter)
 	if conform.get_formatter_info(formatter, bufnr).available then
 		return { formatter }
 	else

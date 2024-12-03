@@ -1,6 +1,6 @@
-Mason_registry = require("mason-registry")
-local  dapui =  require("dapui")
-Dap = require("dap")
+local Mason_registry = require("mason-registry")
+local dapui =  require("dapui")
+local Dap = require("dap")
 Dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end

@@ -2,8 +2,8 @@
 This file is a list of quotes to randomly load on start
 ]]
 --
-Inspire = true
-Comedy = true
+local Inspire = true
+local Comedy = true
 Quotes = {}
 --[[
 Vaugly inspiring

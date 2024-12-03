@@ -1,4 +1,4 @@
-function Iswindows()
+local function Iswindows()
 	if package.config:sub(1, 1) == "\\" then
 		return true
 	else

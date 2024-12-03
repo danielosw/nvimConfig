@@ -1,8 +1,8 @@
-mason = require("mason").setup()
+local mason = require("mason").setup()
 require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
-Linters = {}
-Formatters = {}
+local Linters = {}
+local Formatters = {}
 local lspconfig = require("lspconfig")
 local lspservers = {}
 local masonconfig = require("mason-lspconfig")
@@ -83,7 +83,7 @@ end
 	})
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
-nls = require("null-ls")
+local nls = require("null-ls")
 -- Setup none-ls
 require("mason-null-ls").setup({
 	automatic_installation = false,
