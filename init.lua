@@ -52,7 +52,18 @@ o.tabstop = 4
 o.shiftwidth = 4
 o.number = true
 require("helpers.wherepython")
-require("lazy").setup("plugins")
+require("lazy").setup({
+	spec = {
+		{import = "plugins"}
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"netrwPlugin"
+			}
+		}
+	},
+})
 -- load the configs
 require("helpers.inittypes")
 require("config.ui")

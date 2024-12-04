@@ -37,9 +37,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = "VeryLazy",
-		config = function()
-			require("tiny-devicons-auto-colors").setup()
-		end,
+		opts={},
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
@@ -48,7 +46,6 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function() end,
 	},
 	{
 		"SmiteshP/nvim-navic",
