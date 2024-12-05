@@ -88,10 +88,7 @@ return {
 		config = function()
 			-- optionally enable 24-bit colour
 			vim.opt.termguicolors = true
-			require("nvim-tree").setup({
-				hijack_unnamed_buffer_when_opening = true,
-				hijack_netrw = true,
-			})
+			opts = {hijack_unnamed_buffer_when_opening = true, hijack_netrw = true}
 		end,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
