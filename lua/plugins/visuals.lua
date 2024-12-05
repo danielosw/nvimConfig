@@ -1,5 +1,5 @@
 return {
-	 "MunifTanjim/nougat.nvim",
+	"MunifTanjim/nougat.nvim",
 	"hiphish/rainbow-delimiters.nvim",
 	{
 		"folke/noice.nvim",
@@ -14,14 +14,10 @@ return {
 		"akinsho/bufferline.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		event = "VeryLazy",
-		config = function()
-			require("bufferline").setup({
-				options = {
-					separator_style = "slant",
-					themable = true,
-				},
-			})
-		end,
+		opts = { options = {
+			separator_style = "slant",
+			themable = true,
+		} },
 	},
 	{
 		"gorbit99/codewindow.nvim",
@@ -37,7 +33,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = "VeryLazy",
-		opts={},
+		opts = {},
 	},
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
@@ -85,7 +81,7 @@ return {
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-			opts = {hijack_unnamed_buffer_when_opening = true, hijack_netrw = true},
+		opts = { hijack_unnamed_buffer_when_opening = true, hijack_netrw = true },
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},

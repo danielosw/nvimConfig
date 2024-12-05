@@ -5,15 +5,13 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	{
 		"danielosw/nvim-lightbulb",
-		config = function()
-			require("nvim-lightbulb").setup({
-				autocmd = { enabled = true },
-				ignore = {
-					-- Annoyingly this causes dotfyle to thing we have ruff explcitly installed when we don't
-					clients = { "ruff" },
-				},
-			})
-		end,
+		opts = {
+			autocmd = { enabled = true },
+			ignore = {
+				-- Annoyingly this causes dotfyle to thing we have ruff explcitly installed when we don't
+				clients = { "ruff" },
+			},
+		},
 	},
 	{
 		"aznhe21/actions-preview.nvim",

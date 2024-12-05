@@ -155,19 +155,17 @@ return {
 	{
 		"Mofiqul/dracula.nvim",
 		priority = 200,
-		config = function()
-			require("dracula").setup({
-				show_end_of_buffer = false,
-				transparent_bg = false,
-				italic_comment = false,
-				colors = {},
-				overrides = {
-					WinBar = { bg = "bg" },
-					WinBarNC = { bg = "bg" },
-					TabLineSel = { bg = "bg" },
-				},
-			})
-		end,
+		opts = {
+			show_end_of_buffer = false,
+			transparent_bg = false,
+			italic_comment = false,
+			colors = {},
+			overrides = {
+				WinBar = { bg = "bg" },
+				WinBarNC = { bg = "bg" },
+				TabLineSel = { bg = "bg" },
+			},
+		},
 	},
 	{ "nyoom-engineering/oxocarbon.nvim", priority = 200 },
 	{ "navarasu/onedark.nvim", priority = 200 },
