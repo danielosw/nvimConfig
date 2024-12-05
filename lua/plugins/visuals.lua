@@ -85,11 +85,7 @@ return {
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		config = function()
-			-- optionally enable 24-bit colour
-			vim.opt.termguicolors = true
-			opts = {hijack_unnamed_buffer_when_opening = true, hijack_netrw = true}
-		end,
+			opts = {hijack_unnamed_buffer_when_opening = true, hijack_netrw = true},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
