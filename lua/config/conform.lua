@@ -9,26 +9,14 @@ end
 conform.setup({
 	formatters_by_ft = {
 		lua = function(bufnr)
-			if conform.get_formatter_info("stylua", bufnr).available then
-				return { "stylua" }
-			else
-				return { lsp_format = "fallback" }
-			end
+				return haveformat("stylua", bufnr)
 		end,
 		rust = function(bufnr)
-			if conform.get_formatter_info("rustftm", bufnr).available then
-				return { "rustftm" }
-			else
-				return { lsp_format = "fallback" }
-			end
+				return haveformat("rustfmt", bufnr)
 		end,
 
 		python = function(bufnr)
-			if require("conform").get_formatter_info("ruff_format", bufnr).available then
-				return { "ruff_format" }
-			else
-				return {lsp_format = "fallback"}
-			end
+				return haveformat("ruff_format", bufnr)
 		end,
 		typescript = function(bufnr)
 			return haveformat(bufnr, "biome")
@@ -53,4 +41,10 @@ conform.setup({
 		end,
 	},
 	["*"] = { "codespell" },
+})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
 })
