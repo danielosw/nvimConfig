@@ -4,8 +4,6 @@ local Dap = require("dap")
 Dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
--- For preformence reasons Daps are now defined in ftplugin files
-
 -- Takes in a string and configs a matching dap.
 -- The reason I do it this way is so it does not crash if a dap is not installed, because some of configs require it to be installed in mason.
 function setupDap(temp)
@@ -70,6 +68,7 @@ function setupDap(temp)
 		}
 	end
 end
+
 -- Get a list of all installed daps and setup any found
 for _, founddap in ipairs(Daps) do
 	setupDap(founddap)
