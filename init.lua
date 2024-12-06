@@ -19,13 +19,13 @@ require("helpers.iswindows")
 if
 	Windows ~= true
 	and function()
-		local temp = vim.fn.chdir("~/.local/share/mise/shims")
-		if temp ~= "" then
-			vim.fn.chdir(temp)
+			local temp = vim.fn.chdir("~/.local/share/mise/shims")
+			if temp ~= "" then
+				vim.fn.chdir(temp)
+			end
+			return temp
 		end
-		return temp
-	end
-	~= ""
+		~= ""
 then
 	vim.env.PATH = vim.env.HOME .. "~/.local/share/mise/shims:" .. vim.env.PATH
 end
@@ -54,22 +54,19 @@ o.number = true
 require("helpers.wherepython")
 require("lazy").setup({
 	spec = {
-		{import = "plugins"}
+		{ import = "plugins" },
 	},
 	performance = {
 		rtp = {
 			disabled_plugins = {
-				"netrwPlugin"
-			}
-		}
+				"netrwPlugin",
+			},
+		},
 	},
 	profiling = {
-    -- Enables extra stats on the debug tab related to the loader cache.
-    -- Additionally gathers stats about all package.loaders
-    loader = true,
-    -- Track each new require in the Lazy profiling tab
-    require = true,
-  },
+		-- Enables extra stats on the debug tab related to the loader cache.
+		-- Additionally gathers stats about all package.loaders
+	},
 })
 -- load the configs
 require("helpers.inittypes")

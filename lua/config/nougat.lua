@@ -85,7 +85,7 @@ local filestatus = stl:add_item(nut.buf.filestatus({
 stl:add_item(nut.spacer())
 stl:add_item(nut.truncation_point())
 stl:add_item(nut.buf.diagnostic_count({
-	hl = {bg = color.bg4, fg=bg},
+	hl = { bg = color.bg4, fg = bg },
 	sep_left = sep.left_chevron_solid(true),
 	prefix = " ",
 	suffix = " ",

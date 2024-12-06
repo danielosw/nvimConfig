@@ -1,5 +1,5 @@
 local Mason_registry = require("mason-registry")
-local dapui =  require("dapui")
+local dapui = require("dapui")
 local Dap = require("dap")
 Dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
@@ -71,6 +71,6 @@ function setupDap(temp)
 	end
 end
 -- Get a list of all installed daps and setup any found
-	for _, founddap in ipairs(Daps) do
-			setupDap(founddap)
-	end
+for _, founddap in ipairs(Daps) do
+	setupDap(founddap)
+end

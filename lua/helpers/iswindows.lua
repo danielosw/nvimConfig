@@ -6,8 +6,4 @@ local function Iswindows()
 	end
 end
 
-
-
-
 Windows = Iswindows()
-

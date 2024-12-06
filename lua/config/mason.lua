@@ -24,7 +24,7 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 	for _, type in ipairs(pkg_info.spec.categories) do
 		-- Do things based on type.
 		if type == "DAP" then
-			Daps[#Daps+1] = pkg_info.name
+			Daps[#Daps + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
 			if lsp ~= "pylsp" then
@@ -73,14 +73,14 @@ ruffconfig = function()
 		return vim.env.HOME .. "/.config/ruff/ruff.toml"
 	end
 end
-	require("lspconfig").ruff.setup({
-		init_options = {
-			settings = {
-				configurationPreference = "filesystemFirst",
-				configuration = ruffconfig(),
-			},
+require("lspconfig").ruff.setup({
+	init_options = {
+		settings = {
+			configurationPreference = "filesystemFirst",
+			configuration = ruffconfig(),
 		},
-	})
+	},
+})
 -- Define navic winbar.
 vim.o.winbar = "%{%v:lua.require('nvim-navic').get_location()%}"
 local nls = require("null-ls")
