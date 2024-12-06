@@ -117,6 +117,7 @@ return {
 	{
 		"zaldih/themery.nvim",
 		config = function()
+			-- This is some of this the oldest code that's still around, and as such its kind of a mess
 			themes = {}
 			specialthemes = { "cyberdream", "neon", "oxocarbon", "dracula" }
 			for _, value in pairs(vim.fn.getcompletion("", "color")) do

@@ -78,7 +78,7 @@ require("config.ui")
 -- Config mason and related
 -- TODO: rename and split up this config
 require("config.mason")
--- setup conform, MUST HAPPEN AFTER MASON CONFIG.
+-- setup conform
 require("config.conform")
 -- setup dap, MUST HAPPEN AFTER MASON CONFIG
 require("config.dapset")

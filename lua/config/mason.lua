@@ -1,15 +1,12 @@
 local mason = require("mason").setup()
 require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
-local Linters = {}
-local Formatters = {}
 local lspconfig = require("lspconfig")
-local lspservers = {}
 local masonconfig = require("mason-lspconfig")
 Mason_registry = require("mason-registry")
 local navic = require("nvim-navic")
 local navbud = require("nvim-navbuddy")
-
+-- lsp on attach
 local on_attach = function(client, bufnr)
 	-- navic
 	if client.server_capabilities.documentSymbolProvider then
@@ -17,6 +14,7 @@ local on_attach = function(client, bufnr)
 		navbud.attach(client, bufnr)
 	end
 end
+-- Not used in this file but is used in dapset
 Daps = {}
 -- loop through packages.
 for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
@@ -27,9 +25,11 @@ for _, pkg_info in ipairs(Mason_registry.get_installed_packages()) do
 			Daps[#Daps + 1] = pkg_info.name
 		elseif type == "LSP" then
 			lsp = masonconfig.get_mappings().mason_to_lspconfig[pkg_info.name]
+			-- We need to do special config for pylsp to disable plugins
 			if lsp ~= "pylsp" then
 				lspconfig[lsp].setup({ on_attach = on_attach })
 			else
+				-- We want to let the user format with what they want so just disable everything except rope
 				lspconfig[lsp].setup({
 					on_attach = function(client, bufnr)
 						navic.attach(client, bufnr)

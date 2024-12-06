@@ -1,4 +1,5 @@
 local conform = require("conform")
+-- Function to make the default setup more conveniunt
 local haveformat = function(bufnr, formatter)
 	if conform.get_formatter_info(formatter, bufnr).available then
 		return { formatter }
@@ -6,6 +7,7 @@ local haveformat = function(bufnr, formatter)
 		return { lsp_format = "fallback" }
 	end
 end
+-- we want to enable both ruff_format and ruff_fix if possible
 local haveRuff = function(bufnr)
 	local toReturn = {}
 	if conform.get_formatter_info("ruff_format", bufnr).available then
@@ -55,6 +57,7 @@ conform.setup({
 	},
 	["*"] = { "codespell" },
 })
+-- format on write
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
