@@ -26,10 +26,8 @@ conform.setup({
 		lua = function(bufnr)
 			return haveformat("stylua", bufnr)
 		end,
-		rust = function(bufnr)
-			return haveformat("rustfmt", bufnr)
-		end,
-
+		-- I can't figure out how do to this without hard coding it
+		rust = { "rustfmt" },
 		python = function(bufnr)
 			return haveRuff(bufnr)
 		end,
