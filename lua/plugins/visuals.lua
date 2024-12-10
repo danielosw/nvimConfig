@@ -1,6 +1,12 @@
 return {
-	"MunifTanjim/nougat.nvim",
-	"hiphish/rainbow-delimiters.nvim",
+	{
+		"MunifTanjim/nougat.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+	},
+	{
+		"hiphish/rainbow-delimiters.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -28,6 +34,7 @@ return {
 			codewindow.setup()
 			codewindow.apply_default_keybinds()
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"rachartier/tiny-devicons-auto-colors.nvim",
@@ -37,7 +44,11 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		event = { "BufReadPre", "BufNewFile" },
+	},
 
 	{
 		"goolord/alpha-nvim",
@@ -58,6 +69,7 @@ return {
 			depth_limit_indicator = "..",
 			click = true,
 		},
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"SmiteshP/nvim-navbuddy",
@@ -65,10 +77,11 @@ return {
 			"SmiteshP/nvim-navic",
 			"MunifTanjim/nui.nvim",
 		},
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"RRethy/vim-illuminate",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"stevearc/dressing.nvim",
