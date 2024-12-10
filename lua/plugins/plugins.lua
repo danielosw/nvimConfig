@@ -1,5 +1,5 @@
 return {
-	"nvim-lua/plenary.nvim",
+	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
 		"AckslD/swenv.nvim",
 		ft = "python",
@@ -28,6 +28,8 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		opts = { templates = { "builtin" } },
+		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "OverseerInfo" },
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -35,7 +37,7 @@ return {
 		opts = {},
 		priority = 49,
 	},
-	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+	{ "windwp/nvim-autopairs", event = "InsertEnter" },
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },

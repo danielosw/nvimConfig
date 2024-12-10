@@ -8,7 +8,6 @@ return {
 		opts = {
 			autocmd = { enabled = true },
 			ignore = {
-				-- Annoyingly this causes dotfyle to thing we have ruff explcitly installed when we don't
 				clients = { "ruff" },
 			},
 		},
