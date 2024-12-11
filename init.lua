@@ -42,12 +42,6 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 vim.loader.enable()
 opt.termguicolors = true
--- You can setup any custom logic for font's here
-function getFont()
-	return "CaskaydiaCove NF"
-end
-
-o.guifont = getFont()
 -- Disabling default style's
 g.python_recommended_style = 0
 g.rust_recommended_style = 0
