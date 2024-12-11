@@ -41,6 +41,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufReadPre", "BufNewFile" },
+		cmd = "TSUpdate",
 	},
 
 	{
@@ -83,5 +84,6 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
+		cmd = { "NvimTreeOpen", "NvimTreeToggle" },
 	},
 }
