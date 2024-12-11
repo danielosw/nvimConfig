@@ -1,5 +1,5 @@
 return {
-	{ "nvim-lua/plenary.nvim",   lazy = true },
+	{ "nvim-lua/plenary.nvim", lazy = true },
 	{ "williamboman/mason.nvim", lazy = true },
 
 	{
@@ -21,7 +21,7 @@ return {
 		opts = {},
 		priority = 49,
 	},
-	{ "windwp/nvim-autopairs", event = "InsertEnter" },
+	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
