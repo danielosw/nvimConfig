@@ -130,34 +130,3 @@ stl_inactive:add_item(nut.spacer())
 nougat.set_statusline(function(ctx)
 	return ctx.is_focused and stl or stl_inactive
 end)
-
-local tal = Bar("tabline")
-
-tal:add_item(nut.tab.tablist.tabs({
-	active_tab = {
-		hl = { bg = color.bg, fg = color.blue },
-		prefix = " ",
-		suffix = " ",
-		content = {
-			nut.tab.tablist.icon({ suffix = " " }),
-			nut.tab.tablist.label({}),
-			nut.tab.tablist.modified({ prefix = " ", config = { text = "●" } }),
-			nut.tab.tablist.close({ prefix = " ", config = { text = "󰅖" } }),
-		},
-		sep_right = sep.right_chevron_solid(true),
-	},
-	inactive_tab = {
-		hl = { bg = color.bg2, fg = color.fg2 },
-		prefix = " ",
-		suffix = " ",
-		content = {
-			nut.tab.tablist.icon({ suffix = " " }),
-			nut.tab.tablist.label({}),
-			nut.tab.tablist.modified({ prefix = " ", config = { text = "●" } }),
-			nut.tab.tablist.close({ prefix = " ", config = { text = "󰅖" } }),
-		},
-		sep_right = sep.right_chevron_solid(true),
-	},
-}))
-
-nougat.set_tabline(tal)
