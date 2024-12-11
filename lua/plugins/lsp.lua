@@ -11,6 +11,7 @@ return {
 				clients = { "ruff" },
 			},
 		},
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		"aznhe21/actions-preview.nvim",

@@ -16,7 +16,7 @@ return {
 			post_set_venv = nil,
 		},
 	},
-	"williamboman/mason.nvim",
+	{ "williamboman/mason.nvim", lazy = true },
 
 	{
 		"folke/lazydev.nvim",
