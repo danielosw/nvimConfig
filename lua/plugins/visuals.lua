@@ -2,10 +2,6 @@ return {
 	{
 		"MunifTanjim/nougat.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			-- this is really dumb
-			require("config.nougat")
-		end
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
