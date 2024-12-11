@@ -31,15 +31,6 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
-		"gorbit99/codewindow.nvim",
-		config = function()
-			local codewindow = require("codewindow")
-			codewindow.setup()
-			codewindow.apply_default_keybinds()
-		end,
-		event = { "BufReadPre", "BufNewFile" },
-	},
-	{
 		"rachartier/tiny-devicons-auto-colors.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -85,13 +76,6 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
-	},
-	{
-		"nvchad/minty",
-		cmd = { "Shades", "Huefy" },
-		dependencies = {
-			"nvchad/volt",
-		},
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
