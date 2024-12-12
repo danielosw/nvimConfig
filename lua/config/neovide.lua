@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local g = vim.g
 local o = vim.o
 g.neovide_theme = "auto"
-g.neovide_no_idle = false
+g.neovide_no_idle = true
 g.neovide_cursor_vfx_mode = "railgun"
 keymap.set("v", "<D-c>", '"+y') -- Copy
 keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
